@@ -37,20 +37,12 @@ $routes->group('', ['filter' => 'login'], function($routes){
 	$routes->match(['get', 'post'],'/m-agama', 'MAgama::index');
 	$routes->get('/m-agama/hapus/(:num)', 'MAgama::hapus/$1');
 	$routes->match(['get', 'post'], '/m-agama/edit/(:num)', 'MAgama::index/$1');
+	// form
+	$routes->get('/form-sekolah', 'Admin\MSekolah::index');
+	// user sekolah
+	$routes->get('/form-user-sekolah', 'UserSekolah\UserSekolah::index');
 });
-/**
- * --------------------------------------------------------------------
- * Additional Routing
- * --------------------------------------------------------------------
- *
- * There will often be times that you need additional routing and you
- * need to it be able to override any defaults in this file. Environment
- * based routes is one such time. require() additional route files here
- * to make that happen.
- *
- * You will have access to the $routes object within that file without
- * needing to reload it.
- */
+
 if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php'))
 {
 	require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';

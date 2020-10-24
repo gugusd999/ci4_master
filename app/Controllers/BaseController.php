@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controllers;
 
 /**
@@ -14,6 +15,8 @@ namespace App\Controllers;
  * @package CodeIgniter
  */
 
+// use App\Models\Form;
+
 use CodeIgniter\Controller;
 
 class BaseController extends Controller
@@ -27,6 +30,16 @@ class BaseController extends Controller
 	 * @var array
 	 */
 	protected $helpers = [];
+
+
+
+	public static function form()
+	{
+		return new \App\Models\Form();
+	}
+
+
+	// public $userModel = new \App\Models\Form();
 
 	/**
 	 * Constructor.
@@ -42,5 +55,4 @@ class BaseController extends Controller
 		// E.g.:
 		// $this->session = \Config\Services::session();
 	}
-
 }

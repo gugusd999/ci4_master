@@ -13,16 +13,10 @@ class Home extends BaseController
 
 	public function home()
 	{
-
-
 		$data = session();
-
 		$data->name = 'hooki';
-
 		echo view('admin/home');
-		
 	}
-
 
 	//--------------------------------------------------------------------
 
