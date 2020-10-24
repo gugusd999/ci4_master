@@ -11,9 +11,58 @@ class Form extends Model
     public static function start($action = "")
     {
         echo '
-<form class="form-horizontal" action="' . $action . '" method="post">
+            <form class="form-horizontal" action="' . $action . '" method="post">
         ';
     }
+
+    public static function getfile_db($data, $path, $name, $id, $table, $datapath = "")
+    {
+        $db = \Config\Database::connect();
+
+        if (!file_exists($path)) {
+            mkdir($path);
+        }
+
+        $gambar = $db->query("SELECT * FROM $table WHERE id = '$id'")->getResultObject()[0]->$data;
+
+        $data = $_FILES[$data];
+        if ($data['name'] != "") {
+            unlink($path . $datapath . '/' . $name . $gambar);
+            // cek if file exist
+            if (file_exists($path . '/' . $name . $data['name'])) {
+
+                unlink($path . '/' . $name . $data['name']);
+                move_uploaded_file($data['tmp_name'], $path . '/' . $name . $data['name']);
+            } else {
+                move_uploaded_file($data['tmp_name'], $path . '/' . $name . $data['name']);
+            }
+            return $data['name'];
+        } else {
+            return $gambar;
+        }
+    }
+
+    public static function getfile($data, $path, $name)
+    {
+        $data = $_FILES[$data];
+
+        if (!file_exists($path)) {
+            mkdir($path);
+        }
+
+
+        // cek if file exist
+        if (file_exists($path . '/' . $name . $data['name'])) {
+
+            unlink($path . '/' . $name . $data['name']);
+            move_uploaded_file($data['tmp_name'], $path . '/' . $name . $data['name']);
+        } else {
+            move_uploaded_file($data['tmp_name'], $path . '/' . $name . $data['name']);
+        }
+
+        return $data['name'];
+    }
+
 
     public static function end()
     {
