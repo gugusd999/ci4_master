@@ -61,9 +61,20 @@ class {{classname}} extends BaseController
         echo json_encode($r);
     }
 
-    public function Index()
+    public function Index($edit = "")
     {
-        return view('{{tablename}}/form');
+        if(isset($_POST['data'])){
+            $data = $_POST['data'];
+            unset($_POST['data']);
+            $this->builder->insert($data);
+            $data['success'] = 'data telah disimpan';
+        }
+        if ($edit != "") {
+            $data['edit'] = $this->db->query("SELECT * FROM {{tablename}} WHERE {{kode}} = '$edit' ")->getRow();
+            return view('{{tablename}}/index', $data);
+        }else{
+            return view('{{tablename}}/index');
+        }
     }
 
     public function simpan()

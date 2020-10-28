@@ -1,0 +1,16 @@
+CRITICAL - 2020-10-28 04:47:04 --> Undefined variable: data
+#0 C:\Users\USER\Desktop\project\ci4_master\app\Controllers\MAgama.php(109): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\Users\\USER\\D...', 109, Array)
+#1 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(910): App\Controllers\MAgama->Index()
+#2 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MAgama))
+#3 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\Users\USER\Desktop\project\ci4_master\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 C:\Users\USER\Desktop\project\ci4_master\system\Commands\Server\rewrite.php(34): require_once('C:\\Users\\USER\\D...')
+#6 {main}
+CRITICAL - 2020-10-28 04:55:07 --> Undefined variable: builder
+#0 C:\Users\USER\Desktop\project\ci4_master\app\Controllers\MAgama.php(92): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\Users\\USER\\D...', 92, Array)
+#1 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(910): App\Controllers\MAgama->Index()
+#2 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MAgama))
+#3 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\Users\USER\Desktop\project\ci4_master\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 C:\Users\USER\Desktop\project\ci4_master\system\Commands\Server\rewrite.php(34): require_once('C:\\Users\\USER\\D...')
+#6 {main}

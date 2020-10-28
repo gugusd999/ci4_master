@@ -66,9 +66,20 @@ $child[] = $value->type_status_id;
         echo json_encode($r);
     }
 
-    public function Index()
+    public function Index($edit = "")
     {
-        return view('status/form');
+        if(isset($_POST['data'])){
+            $data = $_POST['data'];
+            unset($_POST['data']);
+            $this->builder->insert($data);
+            $data['success'] = 'data telah disimpan';
+        }
+        if ($edit != "") {
+            $data['edit'] = $this->db->query("SELECT * FROM status WHERE id = '$edit' ")->getRow();
+            return view('status/index', $data);
+        }else{
+            return view('status/index');
+        }
     }
 
     public function simpan()

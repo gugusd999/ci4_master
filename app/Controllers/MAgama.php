@@ -8,9 +8,10 @@ class MAgama extends BaseController
 {
 
     protected $db;
-
+    protected $builder;
     public function __construct(){
         $this->db = \Config\Database::connect();
+        $this->builder = $this->db->table('mAgama');
     }
 
     function json(){
@@ -80,36 +81,18 @@ class MAgama extends BaseController
 
     public function Index($edit = "")
     {
-        if(isset($_POST['edit'])){
-
-            $data = $_POST['edit'];
-
-            unset($_POST['edit']);
-
-            $this->db->query("UPDATE mAgama SET nama = '".$data['nama']."' WHERE kode = '".$data['kode']."' ");
-
-            $data['success'] = 'data telah disimpan';
-
-        }
         if(isset($_POST['data'])){
-
             $data = $_POST['data'];
-
             unset($_POST['data']);
-
-            $this->db->query("INSERT INTO mAgama (kode, nama) VALUE('".$data['kode']."', '".$data['nama']."') ");
-
+            $this->builder->insert($data);
             $data['success'] = 'data telah disimpan';
-
+            return view('mAgama/index');
         }
         if ($edit != "") {
             $data['edit'] = $this->db->query("SELECT * FROM mAgama WHERE kode = '$edit' ")->getRow();
-
-            $data['agama'] = $this->db->query("SELECT * FROM mAgama LIMIT 0, 5")->getResultObject();
             return view('mAgama/index', $data);
         }else{
-            $data['agama'] = $this->db->query("SELECT * FROM mAgama LIMIT 0, 5")->getResultObject();
-            return view('mAgama/index', $data);
+            return view('mAgama/index');
         }
     }
     
