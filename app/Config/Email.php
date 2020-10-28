@@ -9,14 +9,14 @@ class Email extends BaseConfig
 	/**
 	 * @var string
 	 */
-	public $fromEmail="";
-	// public $fromEmail = "ilmucoding.com@gmail.com";
+	// public $fromEmail="";
+	public $fromEmail = "info@medcon.co.id";
 
 	/**
 	 * @var string
 	 */
-	public $fromName="";
-	// public $fromName = "Ilmu Coding";
+	// public $fromName="";
+	public $fromName = "Medcon";
 
 	/**
 	 * @var string
@@ -35,7 +35,7 @@ class Email extends BaseConfig
 	 *
 	 * @var string
 	 */
-	public $protocol = 'mail';
+	public $protocol = 'smtp';
 
 	/**
 	 * The server path to Sendmail.
@@ -49,28 +49,28 @@ class Email extends BaseConfig
 	 *
 	 * @var string
 	 */
-	public $SMTPHost;
+	public $SMTPHost = "srv53.niagahoster.com";
 
 	/**
 	 * SMTP Username
 	 *
 	 * @var string
 	 */
-	public $SMTPUser;
+	public $SMTPUser ="info@medcon.co.id";
 
 	/**
 	 * SMTP Password
 	 *
 	 * @var string
 	 */
-	public $SMTPPass;
+	public $SMTPPass = "MedC0n15C";
 
 	/**
 	 * SMTP Port
 	 *
 	 * @var integer
 	 */
-	public $SMTPPort = 25;
+	public $SMTPPort = 465;
 
 	/**
 	 * SMTP Timeout (in seconds)
@@ -84,7 +84,7 @@ class Email extends BaseConfig
 	 *
 	 * @var boolean
 	 */
-	public $SMTPKeepAlive = false;
+	public $SMTPKeepAlive = true;
 
 	/**
 	 * SMTP Encryption. Either tls or ssl

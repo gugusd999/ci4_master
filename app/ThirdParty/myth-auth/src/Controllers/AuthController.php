@@ -96,7 +96,11 @@ class AuthController extends Controller
 		$redirectURL = session('redirect_url') ?? site_url('/');
 		unset($_SESSION['redirect_url']);
 
-		return redirect()->to($redirectURL)->withCookies()->with('message', lang('Auth.loginSuccess'));
+		$session = session();
+
+		$session->message = "success";
+
+		return redirect()->to($redirectURL);
 	}
 
 	/**
