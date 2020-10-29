@@ -1,19 +1,19 @@
 <?= $this->extend('template/admin') ?>
 <?= $this->section('header') ?>
-    <div class="page-title">
-        <h4>
-            <i class="icon-arrow-left52 position-left"></i>
-            <span class="text-semibold">Home</span> - Status
-            <small class="display-block">Good morning, Victoria Baker!</small>
-        </h4>
+<div class="page-title">
+    <h4>
+        <i class="icon-arrow-left52 position-left"></i>
+        <span class="text-semibold">Home</span> - Status
+        <small class="display-block">Good morning, Victoria Baker!</small>
+    </h4>
+</div>
+<div class="heading-elements">
+    <div class="heading-btn-group">
+        <a href="#" class="btn btn-link btn-float has-text"><i class="icon-bars-alt text-primary"></i><span>Statistics</span></a>
+        <a href="#" class="btn btn-link btn-float has-text"><i class="icon-calculator text-primary"></i> <span>Invoices</span></a>
+        <a href="#" class="btn btn-link btn-float has-text"><i class="icon-calendar5 text-primary"></i> <span>Schedule</span></a>
     </div>
-    <div class="heading-elements">
-        <div class="heading-btn-group">
-            <a href="#" class="btn btn-link btn-float has-text"><i class="icon-bars-alt text-primary"></i><span>Statistics</span></a>
-            <a href="#" class="btn btn-link btn-float has-text"><i class="icon-calculator text-primary"></i> <span>Invoices</span></a>
-            <a href="#" class="btn btn-link btn-float has-text"><i class="icon-calendar5 text-primary"></i> <span>Schedule</span></a>
-        </div>
-    </div>
+</div>
 
 <?= $this->endSection() ?>
 
@@ -22,57 +22,60 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-4">
-            <?php if(isset($edit)) : ?>
+            <?php if (isset($edit)) : ?>
                 <form action="/m-agama" method="post">
-                        <div class="form-group">
-                            <label for="">Kode</label>
-                            <input type="number" readonly class="form-control" name="edit[kode]" value="<?= $edit->kode; ?>">
-                        </div>
-                        <div class="form-group">
-                            <label for="">Nama</label>
-                            <input type="text" required class="form-control" name="edit[nama]" value="<?= $edit->nama; ?>">
-                        </div>
-                        <input type="submit" class="btn btn-primary" id="" value="update">
+                    <div class="form-group">
+                        <label for="">Kode</label>
+                        <input type="number" readonly class="form-control" name="edit[kode]" value="<?= $edit->kode; ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Nama</label>
+                        <input type="text" required class="form-control" name="edit[nama]" value="<?= $edit->nama; ?>">
+                    </div>
+                    <input type="submit" class="btn btn-primary" id="" value="update">
                 </form>
             <?php else : ?>
                 <?php
-                    $form::start();
-                    $form::summernote();
-                    
-        
-                        $form::input([
-                            "title" => "id",
-                            "type" => "number",
-                            "fc" => "id",
-                            "data" => "id",
-                            "placeholder" => "inputkan id",
-                        ]);
-                    
-                    
-        
-                        $form::input([
-                            "title" => "status",
-                            "type" => "text",
-                            "fc" => "status",
-                            "data" => "id",
-                            "placeholder" => "inputkan status",
-                        ]);
-                    
-                    
-        
-                        $form::input([
-                            "title" => "type status",
-                            "type" => "number",
-                            "fc" => "type_status_id",
-                            "data" => "id",
-                            "placeholder" => "inputkan type status",
-                        ]);
-                    
-                    
-                    $form->submit();
-                    $form::end();
+                $form::start();
+                $form::summernote();
+
+
+                $form::input([
+                    "title" => "id",
+                    "type" => "number",
+                    "fc" => "id",
+                    "data" => "id",
+                    "placeholder" => "inputkan id",
+                ]);
+
+
+
+                $form::input([
+                    "title" => "status",
+                    "type" => "text",
+                    "fc" => "status",
+                    "data" => "id",
+                    "placeholder" => "inputkan status",
+                ]);
+
+
+
+                $form::select_db([
+                    "title" => "type status",
+                    "type" => "number",
+                    "fc" => "type_status_id",
+                    "data" => "id",
+                    "placeholder" => "inputkan type status",
+                    "db" => "typeStatus",
+                    "data" => "type_status",
+                    "key" => "id"
+                ]);
+
+
+                $form->submit();
+                $form::end();
                 ?>
-            <?php endif; ?>     
+            <?php endif; ?>
         </div>
         <div class="col-sm-8">
             <div class="card">
@@ -80,35 +83,34 @@
                     <table id="mytable" class="table table-bordered" style="width:100%">
                         <thead>
                             <tr>
-                                 <th>id</th> 
- <th>status</th> 
- <th>type status</th> 
-<th>Action</th>
+                                <th>id</th>
+                                <th>status</th>
+                                <th>type status</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            
+
                         </tbody>
                     </table>
 
                     <script>
+                        var mytable = null;
 
-                    var mytable = null;
-    
-                    $(document).ready(function(){
-                        mytable = $("#mytable").DataTable({
-                            scrollX: true,
-                            scrollY: true,
-                            processing: true,
-                            serverSide: true,
-                            order: [],
-                            ajax: {
-                                "url"       : "<?= site_url('status/json')?>",
-                                "type"      : "POST"
-                            }
-                        })
+                        $(document).ready(function() {
+                            mytable = $("#mytable").DataTable({
+                                scrollX: true,
+                                scrollY: true,
+                                processing: true,
+                                serverSide: true,
+                                order: [],
+                                ajax: {
+                                    "url": "<?= site_url('status/json') ?>",
+                                    "type": "POST"
+                                }
+                            })
 
-                    });
+                        });
                     </script>
                 </div>
             </div>
@@ -119,38 +121,36 @@
 <!-- modal delete -->
 
 <div class="modal" id="hapusmodal">
-  <div class="modal-dialog">
-    <form action="<?= site_url('status/hapus')?>" method="post" enctype="">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">Alert !</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-      <div class="modal-body">
-        Anda yakin ingin menghapus data ?
-        <input type="hidden" name="id" id="kode-hapus"> 
-      </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-danger">Hapus</button>
-        <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-      </div>
+    <div class="modal-dialog">
+        <form action="<?= site_url('status/hapus') ?>" method="post" enctype="">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Alert !</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    Anda yakin ingin menghapus data ?
+                    <input type="hidden" name="id" id="kode-hapus">
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger">Hapus</button>
+                    <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </form>
     </div>
-    </form>
-  </div>
 </div>
 
 <script>
+    $(document).ready(function() {
 
-    $(document).ready(function(){
-
-        $('body').on('click', '[modal-open-delete]', function(){
+        $('body').on('click', '[modal-open-delete]', function() {
             $("#hapusmodal").modal('show');
             $("#kode-hapus").val($(this).attr('data-id'));
 
         })
 
     })
-
 </script>
 
 <!-- end modal -->

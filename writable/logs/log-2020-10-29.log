@@ -70,3 +70,30 @@ CRITICAL - 2020-10-29 00:18:47 --> Unknown column 'kode' in 'where clause'
 #7 /home/gugus/Desktop/ci4/ci4_master/public/index.php(45): CodeIgniter\CodeIgniter->run()
 #8 /home/gugus/Desktop/ci4/ci4_master/system/Commands/Server/rewrite.php(34): require_once('/home/gugus/Des...')
 #9 {main}
+CRITICAL - 2020-10-29 01:34:28 --> Table 'ci4_auth.type_status' doesn't exist
+#0 /home/gugus/Desktop/ci4/ci4_master/system/Database/MySQLi/Connection.php(330): mysqli->query()
+#1 /home/gugus/Desktop/ci4/ci4_master/system/Database/BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 /home/gugus/Desktop/ci4/ci4_master/system/Database/BaseConnection.php(666): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 /home/gugus/Desktop/ci4/ci4_master/app/Models/Form.php(378): CodeIgniter\Database\BaseConnection->query()
+#4 /home/gugus/Desktop/ci4/ci4_master/app/Views/status/index.php(64): App\Models\Form::select_db()
+#5 /home/gugus/Desktop/ci4/ci4_master/system/View/View.php(236): include('/home/gugus/Des...')
+#6 /home/gugus/Desktop/ci4/ci4_master/system/Common.php(1071): CodeIgniter\View\View->render()
+#7 /home/gugus/Desktop/ci4/ci4_master/app/Controllers/Status.php(87): view()
+#8 /home/gugus/Desktop/ci4/ci4_master/system/CodeIgniter.php(910): App\Controllers\Status->Index()
+#9 /home/gugus/Desktop/ci4/ci4_master/system/CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController()
+#10 /home/gugus/Desktop/ci4/ci4_master/system/CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest()
+#11 /home/gugus/Desktop/ci4/ci4_master/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#12 /home/gugus/Desktop/ci4/ci4_master/system/Commands/Server/rewrite.php(34): require_once('/home/gugus/Des...')
+#13 {main}
+CRITICAL - 2020-10-29 01:40:02 --> Undefined property: stdClass::$id
+#0 /home/gugus/Desktop/ci4/ci4_master/app/Models/Form.php(395): CodeIgniter\Debug\Exceptions->errorHandler()
+#1 /home/gugus/Desktop/ci4/ci4_master/app/Views/status/index.php(64): App\Models\Form::select_db()
+#2 /home/gugus/Desktop/ci4/ci4_master/system/View/View.php(236): include('/home/gugus/Des...')
+#3 /home/gugus/Desktop/ci4/ci4_master/system/Common.php(1071): CodeIgniter\View\View->render()
+#4 /home/gugus/Desktop/ci4/ci4_master/app/Controllers/Status.php(87): view()
+#5 /home/gugus/Desktop/ci4/ci4_master/system/CodeIgniter.php(910): App\Controllers\Status->Index()
+#6 /home/gugus/Desktop/ci4/ci4_master/system/CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController()
+#7 /home/gugus/Desktop/ci4/ci4_master/system/CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest()
+#8 /home/gugus/Desktop/ci4/ci4_master/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#9 /home/gugus/Desktop/ci4/ci4_master/system/Commands/Server/rewrite.php(34): require_once('/home/gugus/Des...')
+#10 {main}

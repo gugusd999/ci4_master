@@ -374,29 +374,39 @@ class Form extends Model
         $db = \Config\Database::connect();
 
         $dataNama = $data['data'];
+        $dataVAlue = $data['data'];
 
-        $getData = $db->query("SELECT DISTINCT(" . $dataNama . ") as " . $dataNama . "  FROM " . $data['db'])->getResultObject();
+        $qr = "";
+
+        if (isset($data['key'])) {
+            $dataVAlue = $data['key'];
+            $qr = ", $dataVAlue";
+        }
+
+        $getData = $db->query("SELECT DISTINCT(" . $dataNama . ") as " . $dataNama . " $qr  FROM " . $data['db'])->getResultObject();
 
         $createOption = '<option selected value="">--pilih data--</option>';
 
         foreach ($getData as $key => $value) {
             if (isset($data['selected'])) {
                 if ($data['selected'] == $value->$dataNama) {
-                    $createOption .= '<option selected value="' . $value->$dataNama . '">' . $value->$dataNama . '</option>';
+                    $createOption .= '<option selected value="' . $value->$dataVAlue . '">' . $value->$dataNama . '</option>';
                 } else {
-                    $createOption .= '<option value="' . $value->$dataNama . '">' . $value->$dataNama . '</option>';
+                    $createOption .= '<option value="' . $value->$dataVAlue . '">' . $value->$dataNama . '</option>';
                 }
             } else {
-                $createOption .= '<option value="' . $value->$dataNama . '">' . $value->$dataNama . '</option>';
+                $createOption .= '<option value="' . $value->$dataVAlue . '">' . $value->$dataNama . '</option>';
             }
         }
 
         $html = "
         <div class='form-group'>
-            <label for='" . $data['fc'] . "'>" . $data['title'] . "</label>
+            <label for='" . $data['fc'] . "' class='control-label col-lg-2'>" . $data['title'] . "</label>
+            <div class='col-lg-10'>
             <select id='" . $data['fc'] . "' name='data[" . $data['fc'] . "]' class='form-control'>
                 $createOption
             </select>
+            </div>
         </div> 
         ";
         echo $html;

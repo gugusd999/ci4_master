@@ -121,8 +121,6 @@ class ControlerBasic extends BaseCommand
             return $formd;
         }
 
-
-
         $filename = APPPATH . 'tmp/controller.tmp';
         $handle = fopen($filename, "r");
         $contents = fread($handle, filesize($filename));
