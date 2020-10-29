@@ -97,3 +97,130 @@ CRITICAL - 2020-10-29 01:40:02 --> Undefined property: stdClass::$id
 #8 /home/gugus/Desktop/ci4/ci4_master/public/index.php(45): CodeIgniter\CodeIgniter->run()
 #9 /home/gugus/Desktop/ci4/ci4_master/system/Commands/Server/rewrite.php(34): require_once('/home/gugus/Des...')
 #10 {main}
+CRITICAL - 2020-10-29 02:36:12 --> Invalid file: typeStatus/index.php
+#0 /home/gugus/Desktop/ci4/ci4_master/system/View/View.php(224): CodeIgniter\Exceptions\FrameworkException::forInvalidFile()
+#1 /home/gugus/Desktop/ci4/ci4_master/system/Common.php(1071): CodeIgniter\View\View->render()
+#2 /home/gugus/Desktop/ci4/ci4_master/app/Controllers/TypeStatus.php(82): view()
+#3 /home/gugus/Desktop/ci4/ci4_master/system/CodeIgniter.php(910): App\Controllers\TypeStatus->Index()
+#4 /home/gugus/Desktop/ci4/ci4_master/system/CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController()
+#5 /home/gugus/Desktop/ci4/ci4_master/system/CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest()
+#6 /home/gugus/Desktop/ci4/ci4_master/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 /home/gugus/Desktop/ci4/ci4_master/system/Commands/Server/rewrite.php(34): require_once('/home/gugus/Des...')
+#8 {main}
+CRITICAL - 2020-10-29 02:40:05 --> syntax error, unexpected '$value' (T_VARIABLE), expecting ')'
+#0 /home/gugus/Desktop/ci4/ci4_master/system/Router/Router.php(192): CodeIgniter\Router\Router->autoRoute()
+#1 /home/gugus/Desktop/ci4/ci4_master/system/CodeIgniter.php(785): CodeIgniter\Router\Router->handle()
+#2 /home/gugus/Desktop/ci4/ci4_master/system/CodeIgniter.php(358): CodeIgniter\CodeIgniter->tryToRouteIt()
+#3 /home/gugus/Desktop/ci4/ci4_master/system/CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest()
+#4 /home/gugus/Desktop/ci4/ci4_master/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#5 /home/gugus/Desktop/ci4/ci4_master/system/Commands/Server/rewrite.php(34): require_once('/home/gugus/Des...')
+#6 {main}
+CRITICAL - 2020-10-29 02:40:31 --> Call to undefined function App\Controllers\site_link()
+#0 /home/gugus/Desktop/ci4/ci4_master/system/CodeIgniter.php(910): App\Controllers\Status->json()
+#1 /home/gugus/Desktop/ci4/ci4_master/system/CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController()
+#2 /home/gugus/Desktop/ci4/ci4_master/system/CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest()
+#3 /home/gugus/Desktop/ci4/ci4_master/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#4 /home/gugus/Desktop/ci4/ci4_master/system/Commands/Server/rewrite.php(34): require_once('/home/gugus/Des...')
+#5 {main}
+CRITICAL - 2020-10-29 02:42:52 --> Invalid file: status/index.php
+#0 /home/gugus/Desktop/ci4/ci4_master/system/View/View.php(224): CodeIgniter\Exceptions\FrameworkException::forInvalidFile()
+#1 /home/gugus/Desktop/ci4/ci4_master/system/Common.php(1071): CodeIgniter\View\View->render()
+#2 /home/gugus/Desktop/ci4/ci4_master/app/Controllers/Status.php(87): view()
+#3 /home/gugus/Desktop/ci4/ci4_master/system/CodeIgniter.php(910): App\Controllers\Status->Index()
+#4 /home/gugus/Desktop/ci4/ci4_master/system/CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController()
+#5 /home/gugus/Desktop/ci4/ci4_master/system/CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest()
+#6 /home/gugus/Desktop/ci4/ci4_master/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 /home/gugus/Desktop/ci4/ci4_master/system/Commands/Server/rewrite.php(34): require_once('/home/gugus/Des...')
+#8 {main}
+CRITICAL - 2020-10-29 02:43:22 --> Invalid file: status/index.php
+#0 /home/gugus/Desktop/ci4/ci4_master/system/View/View.php(224): CodeIgniter\Exceptions\FrameworkException::forInvalidFile()
+#1 /home/gugus/Desktop/ci4/ci4_master/system/Common.php(1071): CodeIgniter\View\View->render()
+#2 /home/gugus/Desktop/ci4/ci4_master/app/Controllers/Status.php(87): view()
+#3 /home/gugus/Desktop/ci4/ci4_master/system/CodeIgniter.php(910): App\Controllers\Status->Index()
+#4 /home/gugus/Desktop/ci4/ci4_master/system/CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController()
+#5 /home/gugus/Desktop/ci4/ci4_master/system/CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest()
+#6 /home/gugus/Desktop/ci4/ci4_master/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 /home/gugus/Desktop/ci4/ci4_master/system/Commands/Server/rewrite.php(34): require_once('/home/gugus/Des...')
+#8 {main}
+CRITICAL - 2020-10-29 02:43:58 --> Invalid file: status/index.php
+#0 /home/gugus/Desktop/ci4/ci4_master/system/View/View.php(224): CodeIgniter\Exceptions\FrameworkException::forInvalidFile()
+#1 /home/gugus/Desktop/ci4/ci4_master/system/Common.php(1071): CodeIgniter\View\View->render()
+#2 /home/gugus/Desktop/ci4/ci4_master/app/Controllers/Status.php(87): view()
+#3 /home/gugus/Desktop/ci4/ci4_master/system/CodeIgniter.php(910): App\Controllers\Status->Index()
+#4 /home/gugus/Desktop/ci4/ci4_master/system/CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController()
+#5 /home/gugus/Desktop/ci4/ci4_master/system/CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest()
+#6 /home/gugus/Desktop/ci4/ci4_master/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 /home/gugus/Desktop/ci4/ci4_master/system/Commands/Server/rewrite.php(34): require_once('/home/gugus/Des...')
+#8 {main}
+CRITICAL - 2020-10-29 02:47:14 --> Invalid file: status/index.php
+#0 /home/gugus/Desktop/ci4/ci4_master/system/View/View.php(224): CodeIgniter\Exceptions\FrameworkException::forInvalidFile()
+#1 /home/gugus/Desktop/ci4/ci4_master/system/Common.php(1071): CodeIgniter\View\View->render()
+#2 /home/gugus/Desktop/ci4/ci4_master/app/Controllers/Status.php(93): view()
+#3 /home/gugus/Desktop/ci4/ci4_master/system/CodeIgniter.php(910): App\Controllers\Status->edit()
+#4 /home/gugus/Desktop/ci4/ci4_master/system/CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController()
+#5 /home/gugus/Desktop/ci4/ci4_master/system/CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest()
+#6 /home/gugus/Desktop/ci4/ci4_master/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 /home/gugus/Desktop/ci4/ci4_master/system/Commands/Server/rewrite.php(34): require_once('/home/gugus/Des...')
+#8 {main}
+CRITICAL - 2020-10-29 02:47:27 --> Invalid file: status/index.php
+#0 /home/gugus/Desktop/ci4/ci4_master/system/View/View.php(224): CodeIgniter\Exceptions\FrameworkException::forInvalidFile()
+#1 /home/gugus/Desktop/ci4/ci4_master/system/Common.php(1071): CodeIgniter\View\View->render()
+#2 /home/gugus/Desktop/ci4/ci4_master/app/Controllers/Status.php(93): view()
+#3 /home/gugus/Desktop/ci4/ci4_master/system/CodeIgniter.php(910): App\Controllers\Status->edit()
+#4 /home/gugus/Desktop/ci4/ci4_master/system/CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController()
+#5 /home/gugus/Desktop/ci4/ci4_master/system/CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest()
+#6 /home/gugus/Desktop/ci4/ci4_master/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#7 /home/gugus/Desktop/ci4/ci4_master/system/Commands/Server/rewrite.php(34): require_once('/home/gugus/Des...')
+#8 {main}
+CRITICAL - 2020-10-29 02:48:22 --> Undefined property: stdClass::$kode
+#0 /home/gugus/Desktop/ci4/ci4_master/app/Views/admin/status/index.php(29): CodeIgniter\Debug\Exceptions->errorHandler()
+#1 /home/gugus/Desktop/ci4/ci4_master/system/View/View.php(236): include('/home/gugus/Des...')
+#2 /home/gugus/Desktop/ci4/ci4_master/system/Common.php(1071): CodeIgniter\View\View->render()
+#3 /home/gugus/Desktop/ci4/ci4_master/app/Controllers/Status.php(93): view()
+#4 /home/gugus/Desktop/ci4/ci4_master/system/CodeIgniter.php(910): App\Controllers\Status->edit()
+#5 /home/gugus/Desktop/ci4/ci4_master/system/CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController()
+#6 /home/gugus/Desktop/ci4/ci4_master/system/CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest()
+#7 /home/gugus/Desktop/ci4/ci4_master/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#8 /home/gugus/Desktop/ci4/ci4_master/system/Commands/Server/rewrite.php(34): require_once('/home/gugus/Des...')
+#9 {main}
+CRITICAL - 2020-10-29 02:54:20 --> Undefined property: stdClass::$kode
+#0 /home/gugus/Desktop/ci4/ci4_master/app/Views/admin/status/index.php(29): CodeIgniter\Debug\Exceptions->errorHandler()
+#1 /home/gugus/Desktop/ci4/ci4_master/system/View/View.php(236): include('/home/gugus/Des...')
+#2 /home/gugus/Desktop/ci4/ci4_master/system/Common.php(1071): CodeIgniter\View\View->render()
+#3 /home/gugus/Desktop/ci4/ci4_master/app/Controllers/Status.php(94): view()
+#4 /home/gugus/Desktop/ci4/ci4_master/system/CodeIgniter.php(910): App\Controllers\Status->edit()
+#5 /home/gugus/Desktop/ci4/ci4_master/system/CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController()
+#6 /home/gugus/Desktop/ci4/ci4_master/system/CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest()
+#7 /home/gugus/Desktop/ci4/ci4_master/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#8 /home/gugus/Desktop/ci4/ci4_master/system/Commands/Server/rewrite.php(34): require_once('/home/gugus/Des...')
+#9 {main}
+CRITICAL - 2020-10-29 02:56:54 --> Undefined property: stdClass::$kode
+#0 /home/gugus/Desktop/ci4/ci4_master/app/Views/admin/status/index.php(29): CodeIgniter\Debug\Exceptions->errorHandler()
+#1 /home/gugus/Desktop/ci4/ci4_master/system/View/View.php(236): include('/home/gugus/Des...')
+#2 /home/gugus/Desktop/ci4/ci4_master/system/Common.php(1071): CodeIgniter\View\View->render()
+#3 /home/gugus/Desktop/ci4/ci4_master/app/Controllers/Status.php(92): view()
+#4 /home/gugus/Desktop/ci4/ci4_master/system/CodeIgniter.php(910): App\Controllers\Status->edit()
+#5 /home/gugus/Desktop/ci4/ci4_master/system/CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController()
+#6 /home/gugus/Desktop/ci4/ci4_master/system/CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest()
+#7 /home/gugus/Desktop/ci4/ci4_master/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#8 /home/gugus/Desktop/ci4/ci4_master/system/Commands/Server/rewrite.php(34): require_once('/home/gugus/Des...')
+#9 {main}
+CRITICAL - 2020-10-29 02:57:58 --> Undefined property: stdClass::$kode
+#0 /home/gugus/Desktop/ci4/ci4_master/app/Views/admin/status/index.php(29): CodeIgniter\Debug\Exceptions->errorHandler()
+#1 /home/gugus/Desktop/ci4/ci4_master/system/View/View.php(236): include('/home/gugus/Des...')
+#2 /home/gugus/Desktop/ci4/ci4_master/system/Common.php(1071): CodeIgniter\View\View->render()
+#3 /home/gugus/Desktop/ci4/ci4_master/app/Controllers/Status.php(92): view()
+#4 /home/gugus/Desktop/ci4/ci4_master/system/CodeIgniter.php(910): App\Controllers\Status->edit()
+#5 /home/gugus/Desktop/ci4/ci4_master/system/CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController()
+#6 /home/gugus/Desktop/ci4/ci4_master/system/CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest()
+#7 /home/gugus/Desktop/ci4/ci4_master/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#8 /home/gugus/Desktop/ci4/ci4_master/system/Commands/Server/rewrite.php(34): require_once('/home/gugus/Des...')
+#9 {main}
+CRITICAL - 2020-10-29 03:26:24 --> Undefined variable: builder
+#0 /home/gugus/Desktop/ci4/ci4_master/app/Controllers/TypeStatus.php(100): CodeIgniter\Debug\Exceptions->errorHandler()
+#1 /home/gugus/Desktop/ci4/ci4_master/system/CodeIgniter.php(910): App\Controllers\TypeStatus->update()
+#2 /home/gugus/Desktop/ci4/ci4_master/system/CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController()
+#3 /home/gugus/Desktop/ci4/ci4_master/system/CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest()
+#4 /home/gugus/Desktop/ci4/ci4_master/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#5 /home/gugus/Desktop/ci4/ci4_master/system/Commands/Server/rewrite.php(34): require_once('/home/gugus/Des...')
+#6 {main}

@@ -13,6 +13,7 @@ class ControlerBasic extends BaseCommand
     protected $table       = '';
     protected $classname   = '';
     protected $id   = '';
+    protected $primary   = false;
     public function run(array $params)
     {
         if (isset($params[0])) {
@@ -21,6 +22,13 @@ class ControlerBasic extends BaseCommand
         }
 
         if (isset($params[1])) {
+            $this->id = $params[1];
+        }
+
+        if (isset($params[2])) {
+            if ($params[2] === "primary") {
+                $this->primary = true;
+            }
             $this->id = $params[1];
         }
 
@@ -55,7 +63,7 @@ class ControlerBasic extends BaseCommand
 
 
         // var_dump($column);
-        function inputformcall($column = [], $id = "")
+        function inputformcall($column = [], $id = "", $primary = false, $update = "")
         {
             $formd = "";
             foreach ($column as $key => $value) {
@@ -91,33 +99,69 @@ class ControlerBasic extends BaseCommand
                 }
 
                 if ($id != "") {
-                    if ($id === $value['Field']) {
+                    if ($id === $value['Field'] && $primary == true) {
                         $formd .= '';
                     } else {
-                        $formd .= '
-                            $form::' . $method . '([
-                                "title" => "' . $createname . '",
-                                "type" => "' . $typeinput . '",
-                                "fc" => "' . $value['Field'] . '",
-                                "data" => "id",
-                                "placeholder" => "inputkan ' . $createname . '",
-                            ]);
-                        ';
+                        if ($update != "") {
+                            $formd .= '
+                                $form::' . $method . '([
+                                    "title" => "' . $createname . '",
+                                    "type" => "' . $typeinput . '",
+                                    "fc" => "' . $value['Field'] . '",
+                                    "data" => "id",
+                                    "placeholder" => "inputkan ' . $createname . '",
+                                    "value" => $edit->' . $value['Field'] . ',
+                                ]);
+                            ';
+                        } else {
+                            $formd .= '
+                                $form::' . $method . '([
+                                    "title" => "' . $createname . '",
+                                    "type" => "' . $typeinput . '",
+                                    "fc" => "' . $value['Field'] . '",
+                                    "data" => "id",
+                                    "placeholder" => "inputkan ' . $createname . '",
+                                ]);
+                            ';
+                        }
                     }
                 } else {
-                    $formd .= '
-        
-                        $form::' . $method . '([
-                            "title" => "' . $createname . '",
-                            "type" => "' . $typeinput . '",
-                            "fc" => "' . $value['Field'] . '",
-                            "data" => "id",
-                            "placeholder" => "inputkan ' . $createname . '",
-                        ]);
-                    
-                    ';
+                    if ($update != "") {
+                        $formd .= '
+                                $form::' . $method . '([
+                                    "title" => "' . $createname . '",
+                                    "type" => "' . $typeinput . '",
+                                    "fc" => "' . $value['Field'] . '",
+                                    "data" => "id",
+                                    "placeholder" => "inputkan ' . $createname . '",
+                                    "value" => $edit->' . $value['Field'] . ',
+                                ]);
+                            ';
+                    } else {
+                        $formd .= '
+                                $form::' . $method . '([
+                                    "title" => "' . $createname . '",
+                                    "type" => "' . $typeinput . '",
+                                    "fc" => "' . $value['Field'] . '",
+                                    "data" => "id",
+                                    "placeholder" => "inputkan ' . $createname . '",
+                                ]);
+                            ';
+                    }
                 }
             }
+
+            if ($update != "") {
+                $formd .= '
+                    $form::input([
+                        "type" => "hidden",
+                        "fc" => "' . $id . '",
+                        "value" => $edit->' . $id . ',
+                    ]);
+                ';
+            }
+
+
             return $formd;
         }
 
@@ -142,7 +186,7 @@ class ControlerBasic extends BaseCommand
 
         // VIEW 
         // cek path
-        $filepath = APPPATH . 'Views/' . $this->table;
+        $filepath = APPPATH . 'Views/admin/' . $this->table;
         if (!file_exists($filepath)) {
             mkdir($filepath, 0777, true);
         }
@@ -165,7 +209,8 @@ class ControlerBasic extends BaseCommand
         $contentsview = str_replace("{{codepencarian}}", $search, $contentsview);
         $contentsview = str_replace("{{rowcall}}", $searchtmp, $contentsview);
         $contentsview = str_replace("{{kode}}", $this->id, $contentsview);
-        $contentsview = str_replace("{{form}}", inputformcall($column), $contentsview);
+        $contentsview = str_replace("{{form}}", inputformcall($column, $this->id, $this->primary), $contentsview);
+        $contentsview = str_replace("{{formupdate}}", inputformcall($column, $this->id, $this->primary, 'update'), $contentsview);
         $contentsview = str_replace("{{headtable}}", $headtable, $contentsview);
 
 
@@ -174,7 +219,6 @@ class ControlerBasic extends BaseCommand
         if (file_exists($filename3)) {
             unlink($filename3);
         }
-
 
         $fp = fopen($filename3, 'w');
         fwrite($fp, $contentsview);

@@ -44,7 +44,7 @@ class TypeStatus extends BaseController
         ");
         $arr = [];
         $dataArr = $qr->getResultObject();
-        $dataTotal = count($qr->getResultObject());
+        $dataTotal = $this->builder->countAll();
         foreach ($dataArr as $key => $value) {
             $child = [];
             $child[] = $value->id; 
@@ -52,6 +52,7 @@ $child[] = $value->type_status;
 
             $child[] = "
                 <center>
+                    <a href='" . site_url('typeStatus/edit/'.$value->id) . "' class='btn btn-sm btn-warning'>Edit</a>
                     <button data-id='" . $value->id . "' modal-open-delete class='btn btn-sm btn-danger'>Delete</button>
                 </center>
             ";
@@ -74,28 +75,41 @@ $child[] = $value->type_status;
             $this->builder->insert($data);
             $data['success'] = 'data telah disimpan';
             $data['form'] = $this->form();
-            return view('typeStatus/index', $data);
-        }
-        if ($edit != "") {
-            $data['edit'] = $this->db->query("SELECT * FROM typeStatus WHERE id = '$edit' ")->getRow();
-            $data['form'] = $this->form();
-            return view('typeStatus/index', $data);
+            return redirect()->to('/typeStatus'); // ubah disini
         }else{
             $data['form'] = $this->form();
-            return view('typeStatus/index', $data);
+            return view('admin/typeStatus/index', $data);
         }
+    }
+
+
+    public function edit($edit = "")
+    {
+        $data['edit'] = $this->db->query("SELECT * FROM typeStatus WHERE id = '$edit' ")->getRow();
+        $data['form'] = $this->form();
+        return view('admin/typeStatus/index', $data);
+    }
+    
+    public function update()
+    {
+        $data = $_POST['data'];
+        $id = $data['id'];
+        unset($data['id']);
+        $this->builder->where('id', $id);
+        $this->builder->update($data);
+        return redirect()->to('/typeStatus'); // ubah disini
     }
 
     public function simpan()
     {
         $data = $_POST['data'];
         $this->builder->insert($data);
-        return redirect()->to('form-typeStatus');
+        return redirect()->to('/form-typeStatus');
     }
 
     public function formUpdate()
     {
-        return view('typeStatus/update');
+        return view('admin/typeStatus/update');
     }
 
     public function hapus()

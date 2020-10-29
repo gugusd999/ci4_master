@@ -23,42 +23,42 @@
     <div class="row">
         <div class="col-sm-4">
             <?php if(isset($edit)) : ?>
-                <form action="/m-agama" method="post">
-                        <div class="form-group">
-                            <label for="">Kode</label>
-                            <input type="number" readonly class="form-control" name="edit[kode]" value="<?= $edit->kode; ?>">
-                        </div>
-                        <div class="form-group">
-                            <label for="">Nama</label>
-                            <input type="text" required class="form-control" name="edit[nama]" value="<?= $edit->nama; ?>">
-                        </div>
-                        <input type="submit" class="btn btn-primary" id="" value="update">
-                </form>
+                <?php
+                    $form::start(site_url('typeStatus/update'));
+                    $form::summernote();
+                    
+                                $form::input([
+                                    "title" => "type status",
+                                    "type" => "text",
+                                    "fc" => "type_status",
+                                    "data" => "id",
+                                    "placeholder" => "inputkan type status",
+                                    "value" => $edit->type_status,
+                                ]);
+                            
+                    $form::input([
+                        "type" => "hidden",
+                        "fc" => "id",
+                        "value" => $edit->id,
+                    ]);
+                
+                    $form->submit();
+                    $form::end();
+                ?>
+
             <?php else : ?>
                 <?php
                     $form::start();
                     $form::summernote();
                     
-        
-                        $form::input([
-                            "title" => "id",
-                            "type" => "number",
-                            "fc" => "id",
-                            "data" => "id",
-                            "placeholder" => "inputkan id",
-                        ]);
-                    
-                    
-        
-                        $form::input([
-                            "title" => "type status",
-                            "type" => "text",
-                            "fc" => "type_status",
-                            "data" => "id",
-                            "placeholder" => "inputkan type status",
-                        ]);
-                    
-                    
+                                $form::input([
+                                    "title" => "type status",
+                                    "type" => "text",
+                                    "fc" => "type_status",
+                                    "data" => "id",
+                                    "placeholder" => "inputkan type status",
+                                ]);
+                            
                     $form->submit();
                     $form::end();
                 ?>

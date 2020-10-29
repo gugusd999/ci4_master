@@ -4,23 +4,20 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class TypeStatus extends Migration
+class MSoal extends Migration
 {
 	public function up()
 	{
 		$this->forge->addField([
-			'id' => [
-				'type' => 'INT',
-				'constraint' => 11,
-				'unsigned' => TRUE,
-				'auto_increment' => TRUE,
+			'id'          => [
+				'type'           => 'INT',
+				'constraint'     => 11,
 			],
 			'type_status'       => [
 				'type'           => 'VARCHAR',
 				'constraint'     => '255',
 			]
 		]);
-		$this->forge->addKey('id', true);
 		$this->forge->createTable('typeStatus');
 	}
 	//--------------------------------------------------------------------

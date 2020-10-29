@@ -3,7 +3,7 @@
     <div class="page-title">
         <h4>
             <i class="icon-arrow-left52 position-left"></i>
-            <span class="text-semibold">Home</span> - {{classname}}
+            <span class="text-semibold">Home</span> - Status
             <small class="display-block">Good morning, Victoria Baker!</small>
         </h4>
     </div>
@@ -23,19 +23,52 @@
     <div class="row">
         <div class="col-sm-4">
             <?php if(isset($edit)) : ?>
-                <?php
-                    $form::start(site_url('{{tablename}}/update'));
-                    $form::summernote();
-                    {{formupdate}}
-                    $form->submit();
-                    $form::end();
-                ?>
-
+                <form action="/m-agama" method="post">
+                        <div class="form-group">
+                            <label for="">Kode</label>
+                            <input type="number" readonly class="form-control" name="edit[kode]" value="<?= $edit->kode; ?>">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Nama</label>
+                            <input type="text" required class="form-control" name="edit[nama]" value="<?= $edit->nama; ?>">
+                        </div>
+                        <input type="submit" class="btn btn-primary" id="" value="update">
+                </form>
             <?php else : ?>
                 <?php
                     $form::start();
                     $form::summernote();
-                    {{form}}
+                    
+        
+                        $form::input([
+                            "title" => "id",
+                            "type" => "number",
+                            "fc" => "id",
+                            "data" => "id",
+                            "placeholder" => "inputkan id",
+                        ]);
+                    
+                    
+        
+                        $form::input([
+                            "title" => "status",
+                            "type" => "text",
+                            "fc" => "status",
+                            "data" => "id",
+                            "placeholder" => "inputkan status",
+                        ]);
+                    
+                    
+        
+                        $form::input([
+                            "title" => "type status",
+                            "type" => "number",
+                            "fc" => "type_status_id",
+                            "data" => "id",
+                            "placeholder" => "inputkan type status",
+                        ]);
+                    
+                    
                     $form->submit();
                     $form::end();
                 ?>
@@ -47,7 +80,10 @@
                     <table id="mytable" class="table table-bordered" style="width:100%">
                         <thead>
                             <tr>
-                                {{headtable}}
+                                 <th>id</th> 
+ <th>status</th> 
+ <th>type status</th> 
+<th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -67,7 +103,7 @@
                             serverSide: true,
                             order: [],
                             ajax: {
-                                "url"       : "<?= site_url('{{tablename}}/json')?>",
+                                "url"       : "<?= site_url('status/json')?>",
                                 "type"      : "POST"
                             }
                         })
@@ -84,7 +120,7 @@
 
 <div class="modal" id="hapusmodal">
   <div class="modal-dialog">
-    <form action="<?= site_url('{{tablename}}/hapus')?>" method="post" enctype="">
+    <form action="<?= site_url('status/hapus')?>" method="post" enctype="">
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title">Alert !</h4>
@@ -92,7 +128,7 @@
       </div>
       <div class="modal-body">
         Anda yakin ingin menghapus data ?
-        <input type="hidden" name="{{kode}}" id="kode-hapus"> 
+        <input type="hidden" name="id" id="kode-hapus"> 
       </div>
       <div class="modal-footer">
         <button type="submit" class="btn btn-danger">Hapus</button>

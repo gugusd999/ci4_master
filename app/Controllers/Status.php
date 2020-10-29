@@ -1,4 +1,6 @@
-<?php namespace App\Controllers;
+<?php
+
+namespace App\Controllers;
 
 class Status extends BaseController
 {
@@ -45,15 +47,16 @@ class Status extends BaseController
         ");
         $arr = [];
         $dataArr = $qr->getResultObject();
-        $dataTotal = count($qr->getResultObject());
+        $dataTotal = $this->builder->countAll();
         foreach ($dataArr as $key => $value) {
             $child = [];
-            $child[] = $value->id; 
-$child[] = $value->status; 
-$child[] = $value->type_status_id; 
+            $child[] = $value->id;
+            $child[] = $value->status;
+            $child[] = $value->type_status_id;
 
             $child[] = "
                 <center>
+                    <a href='" . site_url('status/edit/' . $value->id) . "' class='btn btn-sm btn-warning'>Edit</a>
                     <button data-id='" . $value->id . "' modal-open-delete class='btn btn-sm btn-danger'>Delete</button>
                 </center>
             ";
@@ -70,34 +73,38 @@ $child[] = $value->type_status_id;
 
     public function Index($edit = "")
     {
-        if(isset($_POST['data'])){
+        if (isset($_POST['data'])) {
             $data = $_POST['data'];
             unset($_POST['data']);
             $this->builder->insert($data);
             $data['success'] = 'data telah disimpan';
             $data['form'] = $this->form();
-            return view('status/index', $data);
-        }
-        if ($edit != "") {
-            $data['edit'] = $this->db->query("SELECT * FROM status WHERE id = '$edit' ")->getRow();
+            return redirect()->to('/status'); // ubah disini
+        } else {
             $data['form'] = $this->form();
-            return view('status/index', $data);
-        }else{
-            $data['form'] = $this->form();
-            return view('status/index', $data);
+            return view('admin/status/index', $data);
         }
     }
+
+
+    public function edit($edit = "")
+    {
+        $data['edit'] = $this->db->query("SELECT * FROM status WHERE id = '$edit' ")->getRow();
+        $data['form'] = $this->form();
+        return view('admin/status/index', $data);
+    }
+
 
     public function simpan()
     {
         $data = $_POST['data'];
         $this->builder->insert($data);
-        return redirect()->to('form-status');
+        return redirect()->to('/form-status');
     }
 
     public function formUpdate()
     {
-        return view('status/update');
+        return view('admin/status/update');
     }
 
     public function hapus()
