@@ -48,7 +48,9 @@ class {{classname}} extends BaseController
             $child = [];
             {{rowcall}}
             $child[] = "
-                <button data-id='" . $value->{{kode}} . "' modal-open-delete class='btn btn-sm btn-danger'>Delete</button>
+                <center>
+                    <button data-id='" . $value->{{kode}} . "' modal-open-delete class='btn btn-sm btn-danger'>Delete</button>
+                </center>
             ";
             $arr[] = $child;
         }
@@ -68,12 +70,16 @@ class {{classname}} extends BaseController
             unset($_POST['data']);
             $this->builder->insert($data);
             $data['success'] = 'data telah disimpan';
+            $data['form'] = $this->form();
+            return view('{{tablename}}/index', $data);
         }
         if ($edit != "") {
             $data['edit'] = $this->db->query("SELECT * FROM {{tablename}} WHERE {{kode}} = '$edit' ")->getRow();
+            $data['form'] = $this->form();
             return view('{{tablename}}/index', $data);
         }else{
-            return view('{{tablename}}/index');
+            $data['form'] = $this->form();
+            return view('{{tablename}}/index', $data);
         }
     }
 
@@ -91,8 +97,8 @@ class {{classname}} extends BaseController
 
     public function hapus()
     {
-        $kode = $_POST['kode'];
-        $this->db->query("DELETE FROM {{tablename}} WHERE kode = '$kode' ");
+        $kode = $_POST['{{kode}}'];
+        $this->db->query("DELETE FROM {{tablename}} WHERE {{kode}} = '$kode' ");
         return redirect()->to('/{{tablename}}'); // ubah disini
     }
 }

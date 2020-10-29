@@ -53,7 +53,9 @@ $child[] = $value->status;
 $child[] = $value->type_status_id; 
 
             $child[] = "
-                <button data-id='" . $value->id . "' modal-open-delete class='btn btn-sm btn-danger'>Delete</button>
+                <center>
+                    <button data-id='" . $value->id . "' modal-open-delete class='btn btn-sm btn-danger'>Delete</button>
+                </center>
             ";
             $arr[] = $child;
         }
@@ -73,12 +75,16 @@ $child[] = $value->type_status_id;
             unset($_POST['data']);
             $this->builder->insert($data);
             $data['success'] = 'data telah disimpan';
+            $data['form'] = $this->form();
+            return view('status/index', $data);
         }
         if ($edit != "") {
             $data['edit'] = $this->db->query("SELECT * FROM status WHERE id = '$edit' ")->getRow();
+            $data['form'] = $this->form();
             return view('status/index', $data);
         }else{
-            return view('status/index');
+            $data['form'] = $this->form();
+            return view('status/index', $data);
         }
     }
 
@@ -96,8 +102,8 @@ $child[] = $value->type_status_id;
 
     public function hapus()
     {
-        $kode = $_POST['kode'];
-        $this->db->query("DELETE FROM status WHERE kode = '$kode' ");
+        $kode = $_POST['id'];
+        $this->db->query("DELETE FROM status WHERE id = '$kode' ");
         return redirect()->to('/status'); // ubah disini
     }
 }

@@ -11,7 +11,14 @@ class Form extends Model
     public static function start($action = "")
     {
         echo '
-            <form class="form-horizontal" action="' . $action . '" method="post">
+            <form class="form-horizontal" action="' . $action . '" method="post" enctype="multipart/form-data">
+        ';
+    }
+
+    public static function submit($action = "")
+    {
+        echo '
+            <button type="submit" class="btn btn-primary">Submit</button>
         ';
     }
 
