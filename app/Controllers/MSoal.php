@@ -1,8 +1,6 @@
-<?php
+<?php namespace App\Controllers;
 
-namespace App\Controllers;
-
-class Status extends BaseController
+class MSoal extends BaseController
 {
     protected $db;
     protected $builder;
@@ -10,7 +8,7 @@ class Status extends BaseController
     public function __construct()
     {
         $this->db = \Config\Database::connect();
-        $this->builder = $this->db->table('status');
+        $this->builder = $this->db->table('mSoal');
     }
 
     function json()
@@ -35,11 +33,12 @@ class Status extends BaseController
             SELECT 
                 * 
             FROM
-                status
+                mSoal
             WHERE 
                  id LIKE '%$pencarian%'  
- OR status LIKE '%$pencarian%'  
- OR type_status_id LIKE '%$pencarian%' 
+ OR status_1_id LIKE '%$pencarian%'  
+ OR waktu_ujian LIKE '%$pencarian%'  
+ OR status_2_id LIKE '%$pencarian%' 
             ORDER BY
                 id $order
             LIMIT
@@ -50,16 +49,14 @@ class Status extends BaseController
         $dataTotal = $this->builder->countAll();
         foreach ($dataArr as $key => $value) {
             $child = [];
-            $child[] = $value->id;
-            $child[] = $value->status;
-            $child[] = $this->form()::rowbackitem('typeStatus', [
-                "row" => "id",
-                "value" => $value->type_status_id
-            ], "type_status");
+            $child[] = $value->id; 
+$child[] = $value->status_1_id; 
+$child[] = $value->waktu_ujian; 
+$child[] = $value->status_2_id; 
 
             $child[] = "
                 <center>
-                    <a href='" . site_url('status/edit/' . $value->id) . "' class='btn btn-sm btn-warning'>Edit</a>
+                    <a href='" . site_url('mSoal/edit/'.$value->id) . "' class='btn btn-sm btn-warning'>Edit</a>
                     <button data-id='" . $value->id . "' modal-open-delete class='btn btn-sm btn-danger'>Delete</button>
                 </center>
             ";
@@ -76,27 +73,27 @@ class Status extends BaseController
 
     public function Index($edit = "")
     {
-        if (isset($_POST['data'])) {
+        if(isset($_POST['data'])){
             $data = $_POST['data'];
             unset($_POST['data']);
             $this->builder->insert($data);
             $data['success'] = 'data telah disimpan';
             $data['form'] = $this->form();
-            return redirect()->to('/status'); // ubah disini
-        } else {
+            return redirect()->to('/mSoal'); // ubah disini
+        }else{
             $data['form'] = $this->form();
-            return view('admin/status/index', $data);
+            return view('admin/mSoal/index', $data);
         }
     }
 
 
     public function edit($edit = "")
     {
-        $data['edit'] = $this->db->query("SELECT * FROM status WHERE id = '$edit' ")->getRow();
+        $data['edit'] = $this->db->query("SELECT * FROM mSoal WHERE id = '$edit' ")->getRow();
         $data['form'] = $this->form();
-        return view('admin/status/index', $data);
+        return view('admin/mSoal/index', $data);
     }
-
+    
     public function update()
     {
         $data = $_POST['data'];
@@ -104,25 +101,25 @@ class Status extends BaseController
         unset($data['id']);
         $this->builder->where('id', $id);
         $this->builder->update($data);
-        return redirect()->to('/status'); // ubah disini
+        return redirect()->to('/mSoal'); // ubah disini
     }
 
     public function simpan()
     {
         $data = $_POST['data'];
         $this->builder->insert($data);
-        return redirect()->to('/form-status');
+        return redirect()->to('/form-mSoal');
     }
 
     public function formUpdate()
     {
-        return view('admin/status/update');
+        return view('admin/mSoal/update');
     }
 
     public function hapus()
     {
         $kode = $_POST['id'];
-        $this->db->query("DELETE FROM status WHERE id = '$kode' ");
-        return redirect()->to('/status'); // ubah disini
+        $this->db->query("DELETE FROM mSoal WHERE id = '$kode' ");
+        return redirect()->to('/mSoal'); // ubah disini
     }
 }

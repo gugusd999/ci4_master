@@ -3,7 +3,7 @@
     <div class="page-title">
         <h4>
             <i class="icon-arrow-left52 position-left"></i>
-            <span class="text-semibold">Home</span> - {{classname}}
+            <span class="text-semibold">Home</span> - MSoal
             <small class="display-block">Good morning, Victoria Baker!</small>
         </h4>
     </div>
@@ -24,9 +24,42 @@
         <div class="col-sm-4">
             <?php if(isset($edit)) : ?>
                 <?php
-                    $form::start(site_url('{{tablename}}/update'));
+                    $form::start(site_url('mSoal/update'));
                     $form::summernote();
-                    {{formupdate}}
+                    
+                                $form::input([
+                                    "title" => "status 1",
+                                    "type" => "text",
+                                    "fc" => "status_1_id",
+                                    "data" => "id",
+                                    "placeholder" => "inputkan status 1",
+                                    "value" => $edit->status_1_id,
+                                ]);
+                            
+                                $form::input([
+                                    "title" => "waktu ujian",
+                                    "type" => "number",
+                                    "fc" => "waktu_ujian",
+                                    "data" => "id",
+                                    "placeholder" => "inputkan waktu ujian",
+                                    "value" => $edit->waktu_ujian,
+                                ]);
+                            
+                                $form::input([
+                                    "title" => "status 2",
+                                    "type" => "text",
+                                    "fc" => "status_2_id",
+                                    "data" => "id",
+                                    "placeholder" => "inputkan status 2",
+                                    "value" => $edit->status_2_id,
+                                ]);
+                            
+                    $form::input([
+                        "type" => "hidden",
+                        "fc" => "id",
+                        "value" => $edit->id,
+                    ]);
+                
                     $form->submit('Update');
                     $form::end();
                 ?>
@@ -35,7 +68,31 @@
                 <?php
                     $form::start();
                     $form::summernote();
-                    {{form}}
+                    
+                                $form::input([
+                                    "title" => "status 1",
+                                    "type" => "text",
+                                    "fc" => "status_1_id",
+                                    "data" => "id",
+                                    "placeholder" => "inputkan status 1",
+                                ]);
+                            
+                                $form::input([
+                                    "title" => "waktu ujian",
+                                    "type" => "number",
+                                    "fc" => "waktu_ujian",
+                                    "data" => "id",
+                                    "placeholder" => "inputkan waktu ujian",
+                                ]);
+                            
+                                $form::input([
+                                    "title" => "status 2",
+                                    "type" => "text",
+                                    "fc" => "status_2_id",
+                                    "data" => "id",
+                                    "placeholder" => "inputkan status 2",
+                                ]);
+                            
                     $form->submit();
                     $form::end();
                 ?>
@@ -47,7 +104,11 @@
                     <table id="mytable" class="table table-bordered" style="width:100%">
                         <thead>
                             <tr>
-                                {{headtable}}
+                                 <th>id</th> 
+ <th>status 1</th> 
+ <th>waktu ujian</th> 
+ <th>status 2</th> 
+<th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -67,7 +128,7 @@
                             serverSide: true,
                             order: [],
                             ajax: {
-                                "url"       : "<?= site_url('{{tablename}}/json')?>",
+                                "url"       : "<?= site_url('mSoal/json')?>",
                                 "type"      : "POST"
                             }
                         })
@@ -84,7 +145,7 @@
 
 <div class="modal" id="hapusmodal">
   <div class="modal-dialog">
-    <form action="<?= site_url('{{tablename}}/hapus')?>" method="post" enctype="">
+    <form action="<?= site_url('mSoal/hapus')?>" method="post" enctype="">
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title">Alert !</h4>
@@ -92,7 +153,7 @@
       </div>
       <div class="modal-body">
         Anda yakin ingin menghapus data ?
-        <input type="hidden" name="{{kode}}" id="kode-hapus"> 
+        <input type="hidden" name="id" id="kode-hapus"> 
       </div>
       <div class="modal-footer">
         <button type="submit" class="btn btn-danger">Hapus</button>

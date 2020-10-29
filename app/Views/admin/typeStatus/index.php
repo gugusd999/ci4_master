@@ -42,7 +42,7 @@
                         "value" => $edit->id,
                     ]);
                 
-                    $form->submit();
+                    $form->submit('Update');
                     $form::end();
                 ?>
 

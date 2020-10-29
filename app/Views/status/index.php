@@ -23,43 +23,22 @@
     <div class="row">
         <div class="col-sm-4">
             <?php if (isset($edit)) : ?>
-                <?php
-                $form::start(site_url('status/update'));
-                $form::summernote();
-
-                $form::input([
-                    "title" => "status",
-                    "type" => "text",
-                    "fc" => "status",
-                    "data" => "id",
-                    "placeholder" => "inputkan status",
-                    "value" => $edit->status,
-                ]);
-
-                $form::select_db([
-                    "title" => "type status",
-                    "type" => "number",
-                    "fc" => "type_status_id",
-                    "db" => "typeStatus",
-                    "data" => "type_status",
-                    "key" => "id",
-                    "value" => $edit->type_status_id,
-                ]);
-
-                $form::input([
-                    "type" => "hidden",
-                    "fc" => "id",
-                    "value" => $edit->id,
-                ]);
-
-                $form->submit('Update');
-                $form::end();
-                ?>
-
+                <form action="/m-agama" method="post">
+                    <div class="form-group">
+                        <label for="">Kode</label>
+                        <input type="number" readonly class="form-control" name="edit[kode]" value="<?= $edit->kode; ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Nama</label>
+                        <input type="text" required class="form-control" name="edit[nama]" value="<?= $edit->nama; ?>">
+                    </div>
+                    <input type="submit" class="btn btn-primary" id="" value="update">
+                </form>
             <?php else : ?>
                 <?php
                 $form::start();
                 $form::summernote();
+
 
                 $form::input([
                     "title" => "id",
@@ -69,6 +48,8 @@
                     "placeholder" => "inputkan id",
                 ]);
 
+
+
                 $form::input([
                     "title" => "status",
                     "type" => "text",
@@ -77,16 +58,21 @@
                     "placeholder" => "inputkan status",
                 ]);
 
+
+
                 $form::select_db([
                     "title" => "type status",
                     "type" => "number",
                     "fc" => "type_status_id",
+                    "data" => "id",
+                    "placeholder" => "inputkan type status",
                     "db" => "typeStatus",
                     "data" => "type_status",
-                    "key" => "id",
+                    "key" => "id"
                 ]);
 
-                $form->submit();
+
+                $form->submit('update');
                 $form::end();
                 ?>
             <?php endif; ?>

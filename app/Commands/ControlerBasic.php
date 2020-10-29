@@ -101,6 +101,8 @@ class ControlerBasic extends BaseCommand
                 if ($id != "") {
                     if ($id === $value['Field'] && $primary == true) {
                         $formd .= '';
+                    } elseif ($id === $value['Field'] && $update != "") {
+                        $formd .= '';
                     } else {
                         if ($update != "") {
                             $formd .= '

@@ -15,10 +15,10 @@ class Form extends Model
         ';
     }
 
-    public static function submit($action = "")
+    public static function submit($action = "Submit")
     {
         echo '
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">' . $action . '</button>
         ';
     }
 
@@ -369,6 +369,19 @@ class Form extends Model
         echo $html;
     }
 
+
+    public static function rowbackitem($table = "", $row = [], $item = "")
+    {
+        $db = \Config\Database::connect();
+        $getData = $db->query("SELECT $item  FROM $table WHERE " . $row["row"] . " = '" . $row["value"] . "' ")->getResultObject();
+        if (isset($getData[0])) {
+            return $getData[0]->$item;
+        } else {
+            return "";
+        }
+    }
+
+
     public static function select_db($data = "")
     {
         $db = \Config\Database::connect();
@@ -385,11 +398,11 @@ class Form extends Model
 
         $getData = $db->query("SELECT DISTINCT(" . $dataNama . ") as " . $dataNama . " $qr  FROM " . $data['db'])->getResultObject();
 
-        $createOption = '<option selected value="">--pilih data--</option>';
+        $createOption = '<option value="">--pilih data--</option>';
 
         foreach ($getData as $key => $value) {
-            if (isset($data['selected'])) {
-                if ($data['selected'] == $value->$dataNama) {
+            if (isset($data['value'])) {
+                if ($data['value'] == $value->$dataVAlue) {
                     $createOption .= '<option selected value="' . $value->$dataVAlue . '">' . $value->$dataNama . '</option>';
                 } else {
                     $createOption .= '<option value="' . $value->$dataVAlue . '">' . $value->$dataNama . '</option>';
