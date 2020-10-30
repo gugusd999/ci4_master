@@ -91,6 +91,39 @@ class Form extends Model
         }
     }
 
+
+    public static function slug($char = "")
+    {
+
+        $char = strtolower($char) . '-' . date('y-m-d-h-i-s');
+        $char = str_replace("%", "", $char);
+        $char = str_replace("!", "", $char);
+        $char = str_replace("@", "", $char);
+        $char = str_replace("#", "", $char);
+        $char = str_replace("$", "", $char);
+        $char = str_replace("^", "", $char);
+        $char = str_replace("&", "", $char);
+        $char = str_replace("*", "", $char);
+        $char = str_replace("(", "", $char);
+        $char = str_replace(")", "", $char);
+        $char = str_replace("+", "", $char);
+        $char = str_replace("=", "", $char);
+        $char = str_replace(";", "", $char);
+        $char = str_replace(".", "", $char);
+        $char = str_replace(":", "", $char);
+        $char = str_replace("'", "", $char);
+        $char = str_replace('"', "", $char);
+        $char = str_replace("?", "", $char);
+        $char = str_replace("/", "-", $char);
+        $char = str_replace("{", "", $char);
+        $char = str_replace("}", "", $char);
+        $char = str_replace("[", "", $char);
+        $char = str_replace("]", "", $char);
+        $char = str_replace(" ", "-", $char);
+        return $char;
+    }
+
+
     public static function input($data = [])
     {
         $html = '<div class="form-group mb-3">';
@@ -396,7 +429,16 @@ class Form extends Model
             $qr = ", $dataVAlue";
         }
 
-        $getData = $db->query("SELECT DISTINCT(" . $dataNama . ") as " . $dataNama . " $qr  FROM " . $data['db'])->getResultObject();
+        $condition = "";
+        if (isset($data['condition'])) {
+            $condition .= " WHERE ";
+            $condition .= $data['condition']['row'];
+            $condition .= " = '";
+            $condition .= $data['condition']['value'];
+            $condition .= "'";
+        }
+
+        $getData = $db->query("SELECT DISTINCT(" . $dataNama . ") as " . $dataNama . " $qr  FROM " . $data['db'] . $condition)->getResultObject();
 
         $createOption = '<option value="">--pilih data--</option>';
 

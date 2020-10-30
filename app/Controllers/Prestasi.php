@@ -1,6 +1,8 @@
-<?php namespace App\Controllers;
+<?php
 
-class TypeStatus extends BaseController
+namespace App\Controllers;
+
+class Prestasi extends BaseController
 {
     protected $db;
     protected $builder;
@@ -8,7 +10,7 @@ class TypeStatus extends BaseController
     public function __construct()
     {
         $this->db = \Config\Database::connect();
-        $this->builder = $this->db->table('TypeStatus');
+        $this->builder = $this->db->table('Prestasi');
     }
 
     function json()
@@ -33,10 +35,15 @@ class TypeStatus extends BaseController
             SELECT 
                 * 
             FROM
-                TypeStatus
+                Prestasi
             WHERE 
                  id LIKE '%$pencarian%'  
- OR type_status LIKE '%$pencarian%' 
+ OR judul LIKE '%$pencarian%'  
+ OR slug LIKE '%$pencarian%'  
+ OR keterangan LIKE '%$pencarian%'  
+ OR status_id LIKE '%$pencarian%'  
+ OR gambar LIKE '%$pencarian%'  
+ OR tanggal LIKE '%$pencarian%' 
             ORDER BY
                 id $order
             LIMIT
@@ -47,12 +54,17 @@ class TypeStatus extends BaseController
         $dataTotal = $this->builder->countAll();
         foreach ($dataArr as $key => $value) {
             $child = [];
-            $child[] = $value->id; 
-$child[] = $value->type_status; 
+            $child[] = $value->id;
+            $child[] = $value->judul;
+            $child[] = $value->slug;
+            $child[] = $value->keterangan;
+            $child[] = $value->status_id;
+            $child[] = $value->gambar;
+            $child[] = $value->tanggal;
 
             $child[] = "
                 <center>
-                    <a href='" . site_url('TypeStatus/edit/'.$value->id) . "' class='btn btn-sm btn-warning'>Edit</a>
+                    <a href='" . site_url('Prestasi/edit/' . $value->id) . "' class='btn btn-sm btn-warning'>Edit</a>
                     <button data-id='" . $value->id . "' modal-open-delete class='btn btn-sm btn-danger'>Delete</button>
                 </center>
             ";
@@ -69,53 +81,50 @@ $child[] = $value->type_status;
 
     public function Index($edit = "")
     {
-        if(isset($_POST['data'])){
+        if (isset($_POST['data'])) {
             $data = $_POST['data'];
+            $slug = $this->form()::slug($data['judul']);
+            $data['slug'] = $slug;
             unset($_POST['data']);
             $this->builder->insert($data);
             $data['success'] = 'data telah disimpan';
             $data['form'] = $this->form();
-            return redirect()->to('/TypeStatus'); // ubah disini
-        }else{
+            return redirect()->to('/Prestasi'); // ubah disini
+        } else {
             $data['form'] = $this->form();
-            return view('admin/TypeStatus/index', $data);
+            return view('admin/Prestasi/index', $data);
         }
     }
 
 
     public function edit($edit = "")
     {
-        $data['edit'] = $this->db->query("SELECT * FROM TypeStatus WHERE id = '$edit' ")->getRow();
+        $data['edit'] = $this->db->query("SELECT * FROM Prestasi WHERE id = '$edit' ")->getRow();
         $data['form'] = $this->form();
-        return view('admin/TypeStatus/index', $data);
+        return view('admin/Prestasi/index', $data);
     }
-    
+
     public function update()
     {
         $data = $_POST['data'];
+        $slug = $this->form()::slug($data['judul']);
+        $data['slug'] = $slug;
         $id = $data['id'];
         unset($data['id']);
         $this->builder->where('id', $id);
         $this->builder->update($data);
-        return redirect()->to('/TypeStatus'); // ubah disini
-    }
-
-    public function simpan()
-    {
-        $data = $_POST['data'];
-        $this->builder->insert($data);
-        return redirect()->to('/form-TypeStatus');
+        return redirect()->to('/Prestasi'); // ubah disini
     }
 
     public function formUpdate()
     {
-        return view('admin/TypeStatus/update');
+        return view('admin/Prestasi/update');
     }
 
     public function hapus()
     {
         $kode = $_POST['id'];
-        $this->db->query("DELETE FROM TypeStatus WHERE id = '$kode' ");
-        return redirect()->to('/TypeStatus'); // ubah disini
+        $this->db->query("DELETE FROM Prestasi WHERE id = '$kode' ");
+        return redirect()->to('/Prestasi'); // ubah disini
     }
 }

@@ -97,13 +97,6 @@ class {{classname}} extends BaseController
         return redirect()->to('/{{tablename}}'); // ubah disini
     }
 
-    public function simpan()
-    {
-        $data = $_POST['data'];
-        $this->builder->insert($data);
-        return redirect()->to('/form-{{tablename}}');
-    }
-
     public function formUpdate()
     {
         return view('admin/{{tablename}}/update');

@@ -1,6 +1,4 @@
-<?php
-
-namespace App\Controllers;
+<?php namespace App\Controllers;
 
 class Status extends BaseController
 {
@@ -10,7 +8,7 @@ class Status extends BaseController
     public function __construct()
     {
         $this->db = \Config\Database::connect();
-        $this->builder = $this->db->table('status');
+        $this->builder = $this->db->table('Status');
     }
 
     function json()
@@ -35,7 +33,7 @@ class Status extends BaseController
             SELECT 
                 * 
             FROM
-                status
+                Status
             WHERE 
                  id LIKE '%$pencarian%'  
  OR status LIKE '%$pencarian%'  
@@ -50,16 +48,13 @@ class Status extends BaseController
         $dataTotal = $this->builder->countAll();
         foreach ($dataArr as $key => $value) {
             $child = [];
-            $child[] = $value->id;
-            $child[] = $value->status;
-            $child[] = $this->form()::rowbackitem('typeStatus', [
-                "row" => "id",
-                "value" => $value->type_status_id
-            ], "type_status");
+            $child[] = $value->id; 
+$child[] = $value->status; 
+$child[] = $value->type_status_id; 
 
             $child[] = "
                 <center>
-                    <a href='" . site_url('status/edit/' . $value->id) . "' class='btn btn-sm btn-warning'>Edit</a>
+                    <a href='" . site_url('Status/edit/'.$value->id) . "' class='btn btn-sm btn-warning'>Edit</a>
                     <button data-id='" . $value->id . "' modal-open-delete class='btn btn-sm btn-danger'>Delete</button>
                 </center>
             ";
@@ -76,27 +71,27 @@ class Status extends BaseController
 
     public function Index($edit = "")
     {
-        if (isset($_POST['data'])) {
+        if(isset($_POST['data'])){
             $data = $_POST['data'];
             unset($_POST['data']);
             $this->builder->insert($data);
             $data['success'] = 'data telah disimpan';
             $data['form'] = $this->form();
-            return redirect()->to('/status'); // ubah disini
-        } else {
+            return redirect()->to('/Status'); // ubah disini
+        }else{
             $data['form'] = $this->form();
-            return view('admin/status/index', $data);
+            return view('admin/Status/index', $data);
         }
     }
 
 
     public function edit($edit = "")
     {
-        $data['edit'] = $this->db->query("SELECT * FROM status WHERE id = '$edit' ")->getRow();
+        $data['edit'] = $this->db->query("SELECT * FROM Status WHERE id = '$edit' ")->getRow();
         $data['form'] = $this->form();
-        return view('admin/status/index', $data);
+        return view('admin/Status/index', $data);
     }
-
+    
     public function update()
     {
         $data = $_POST['data'];
@@ -104,25 +99,25 @@ class Status extends BaseController
         unset($data['id']);
         $this->builder->where('id', $id);
         $this->builder->update($data);
-        return redirect()->to('/status'); // ubah disini
+        return redirect()->to('/Status'); // ubah disini
     }
 
     public function simpan()
     {
         $data = $_POST['data'];
         $this->builder->insert($data);
-        return redirect()->to('/form-status');
+        return redirect()->to('/form-Status');
     }
 
     public function formUpdate()
     {
-        return view('admin/status/update');
+        return view('admin/Status/update');
     }
 
     public function hapus()
     {
         $kode = $_POST['id'];
-        $this->db->query("DELETE FROM status WHERE id = '$kode' ");
-        return redirect()->to('/status'); // ubah disini
+        $this->db->query("DELETE FROM Status WHERE id = '$kode' ");
+        return redirect()->to('/Status'); // ubah disini
     }
 }

@@ -1,6 +1,6 @@
 <?php namespace App\Controllers;
 
-class TypeStatus extends BaseController
+class Video extends BaseController
 {
     protected $db;
     protected $builder;
@@ -8,7 +8,7 @@ class TypeStatus extends BaseController
     public function __construct()
     {
         $this->db = \Config\Database::connect();
-        $this->builder = $this->db->table('TypeStatus');
+        $this->builder = $this->db->table('Video');
     }
 
     function json()
@@ -33,10 +33,14 @@ class TypeStatus extends BaseController
             SELECT 
                 * 
             FROM
-                TypeStatus
+                Video
             WHERE 
                  id LIKE '%$pencarian%'  
- OR type_status LIKE '%$pencarian%' 
+ OR video LIKE '%$pencarian%'  
+ OR judul LIKE '%$pencarian%'  
+ OR status_id LIKE '%$pencarian%'  
+ OR penyusun LIKE '%$pencarian%'  
+ OR tanggal LIKE '%$pencarian%' 
             ORDER BY
                 id $order
             LIMIT
@@ -48,11 +52,15 @@ class TypeStatus extends BaseController
         foreach ($dataArr as $key => $value) {
             $child = [];
             $child[] = $value->id; 
-$child[] = $value->type_status; 
+$child[] = $value->video; 
+$child[] = $value->judul; 
+$child[] = $value->status_id; 
+$child[] = $value->penyusun; 
+$child[] = $value->tanggal; 
 
             $child[] = "
                 <center>
-                    <a href='" . site_url('TypeStatus/edit/'.$value->id) . "' class='btn btn-sm btn-warning'>Edit</a>
+                    <a href='" . site_url('Video/edit/'.$value->id) . "' class='btn btn-sm btn-warning'>Edit</a>
                     <button data-id='" . $value->id . "' modal-open-delete class='btn btn-sm btn-danger'>Delete</button>
                 </center>
             ";
@@ -75,19 +83,19 @@ $child[] = $value->type_status;
             $this->builder->insert($data);
             $data['success'] = 'data telah disimpan';
             $data['form'] = $this->form();
-            return redirect()->to('/TypeStatus'); // ubah disini
+            return redirect()->to('/Video'); // ubah disini
         }else{
             $data['form'] = $this->form();
-            return view('admin/TypeStatus/index', $data);
+            return view('admin/Video/index', $data);
         }
     }
 
 
     public function edit($edit = "")
     {
-        $data['edit'] = $this->db->query("SELECT * FROM TypeStatus WHERE id = '$edit' ")->getRow();
+        $data['edit'] = $this->db->query("SELECT * FROM Video WHERE id = '$edit' ")->getRow();
         $data['form'] = $this->form();
-        return view('admin/TypeStatus/index', $data);
+        return view('admin/Video/index', $data);
     }
     
     public function update()
@@ -97,25 +105,25 @@ $child[] = $value->type_status;
         unset($data['id']);
         $this->builder->where('id', $id);
         $this->builder->update($data);
-        return redirect()->to('/TypeStatus'); // ubah disini
+        return redirect()->to('/Video'); // ubah disini
     }
 
     public function simpan()
     {
         $data = $_POST['data'];
         $this->builder->insert($data);
-        return redirect()->to('/form-TypeStatus');
+        return redirect()->to('/form-Video');
     }
 
     public function formUpdate()
     {
-        return view('admin/TypeStatus/update');
+        return view('admin/Video/update');
     }
 
     public function hapus()
     {
         $kode = $_POST['id'];
-        $this->db->query("DELETE FROM TypeStatus WHERE id = '$kode' ");
-        return redirect()->to('/TypeStatus'); // ubah disini
+        $this->db->query("DELETE FROM Video WHERE id = '$kode' ");
+        return redirect()->to('/Video'); // ubah disini
     }
 }
