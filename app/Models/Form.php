@@ -141,7 +141,7 @@ class Form extends Model
         if (self::cekdata($data, 'type') != "hidden") {
             $html .= '	<label for="' . self::cekdata($data, 'fc') . '" class="control-label col-lg-2">' . self::cekdata($data, 'title') . '</label>';
         }
-        $html .= '<div class="col-lg-10">';
+        $html .= '<div class="col-lg-12">';
         $html .= '	<input ';
         $html .= ' type="' . self::cekdata($data, 'type') . '" ';
         $html .= ' id="' . self::cekdata($data, 'fc') . '" ';
@@ -302,6 +302,7 @@ class Form extends Model
         if (self::cekdata($data, 'type') != "hidden") {
             $html .= '	<label for="' . self::cekdata($data, 'fc') . '">' . self::cekdata($data, 'title') . '</label>';
         }
+        $html .= '<div class="col-lg-12">';
         $html .= '	<textarea ';
         $html .= ' type="' . self::cekdata($data, 'type') . '" ';
         $html .= ' id="' . self::cekdata($data, 'fc') . '" ';
@@ -338,13 +339,14 @@ class Form extends Model
         }
         $html .= '</textarea>';
         $html .= '</div>';
+        $html .= '</div>';
 
         echo $html;
     }
 
     public static function editor($data)
     {
-        $html = '<div class="form-group">';
+        $html = '<div class="form-group row" style="padding: 0 10px;">';
         if (isset($data["show-image"])) {
             if ($data["show-image"] === true) {
                 $html .= '	<div  style="text-align: center;">';
