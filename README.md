@@ -15,3 +15,6 @@ keterangan
 {{key}} -> diganti dengan nama dari key yang digunakan
 !- primary -! ditulis primary jika key nya merupakan primary row
 
+#truncate table
+perintah yang digunakan 
+~ php spark truncate {{namatable}}
