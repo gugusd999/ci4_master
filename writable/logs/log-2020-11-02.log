@@ -1,0 +1,170 @@
+CRITICAL - 2020-11-02 19:55:29 --> No connection could be made because the target machine actively refused it.
+
+#0 C:\Users\USER\Desktop\project\ci4_master\system\Database\BaseConnection.php(377): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\Users\USER\Desktop\project\ci4_master\system\Database\BaseConnection.php(643): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\Users\USER\Desktop\project\ci4_master\app\Models\Form.php(454): CodeIgniter\Database\BaseConnection->query('SELECT DISTINCT...')
+#3 C:\Users\USER\Desktop\project\ci4_master\app\Views\welcome_message.php(34): App\Models\Form::select_db(Array, 'col-sm-4')
+#4 C:\Users\USER\Desktop\project\ci4_master\system\View\View.php(236): include('C:\\Users\\USER\\D...')
+#5 C:\Users\USER\Desktop\project\ci4_master\system\Common.php(1071): CodeIgniter\View\View->render('welcome_message', Array, true)
+#6 C:\Users\USER\Desktop\project\ci4_master\app\Controllers\Home.php(12): view('welcome_message', Array)
+#7 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(910): App\Controllers\Home->index()
+#8 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#9 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\Users\USER\Desktop\project\ci4_master\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#11 C:\Users\USER\Desktop\project\ci4_master\system\Commands\Server\rewrite.php(34): require_once('C:\\Users\\USER\\D...')
+#12 {main}
+CRITICAL - 2020-11-02 20:19:51 --> Use of undefined constant response - assumed 'response' (this will throw an Error in a future version of PHP)
+#0 C:\Users\USER\Desktop\project\ci4_master\app\Controllers\Home.php(24): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Use of undefine...', 'C:\\Users\\USER\\D...', 24, Array)
+#1 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(910): App\Controllers\Home->pdf()
+#2 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#3 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\Users\USER\Desktop\project\ci4_master\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 C:\Users\USER\Desktop\project\ci4_master\system\Commands\Server\rewrite.php(34): require_once('C:\\Users\\USER\\D...')
+#6 {main}
+CRITICAL - 2020-11-02 20:22:21 --> file_get_contents(file.pdf): failed to open stream: No such file or directory
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_get_conten...', 'C:\\Users\\USER\\D...', 27, Array)
+#1 C:\Users\USER\Desktop\project\ci4_master\app\Controllers\Home.php(27): file_get_contents('file.pdf')
+#2 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(910): App\Controllers\Home->pdf()
+#3 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#4 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\Users\USER\Desktop\project\ci4_master\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#6 C:\Users\USER\Desktop\project\ci4_master\system\Commands\Server\rewrite.php(34): require_once('C:\\Users\\USER\\D...')
+#7 {main}
+CRITICAL - 2020-11-02 20:22:22 --> file_get_contents(file.pdf): failed to open stream: No such file or directory
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_get_conten...', 'C:\\Users\\USER\\D...', 27, Array)
+#1 C:\Users\USER\Desktop\project\ci4_master\app\Controllers\Home.php(27): file_get_contents('file.pdf')
+#2 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(910): App\Controllers\Home->pdf()
+#3 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#4 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 C:\Users\USER\Desktop\project\ci4_master\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#6 C:\Users\USER\Desktop\project\ci4_master\system\Commands\Server\rewrite.php(34): require_once('C:\\Users\\USER\\D...')
+#7 {main}
+CRITICAL - 2020-11-02 20:22:33 --> Undefined variable: content
+#0 C:\Users\USER\Desktop\project\ci4_master\app\Controllers\Home.php(28): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\Users\\USER\\D...', 28, Array)
+#1 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(910): App\Controllers\Home->pdf()
+#2 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#3 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\Users\USER\Desktop\project\ci4_master\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 C:\Users\USER\Desktop\project\ci4_master\system\Commands\Server\rewrite.php(34): require_once('C:\\Users\\USER\\D...')
+#6 {main}
+CRITICAL - 2020-11-02 20:22:35 --> Undefined variable: content
+#0 C:\Users\USER\Desktop\project\ci4_master\app\Controllers\Home.php(28): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\Users\\USER\\D...', 28, Array)
+#1 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(910): App\Controllers\Home->pdf()
+#2 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#3 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\Users\USER\Desktop\project\ci4_master\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 C:\Users\USER\Desktop\project\ci4_master\system\Commands\Server\rewrite.php(34): require_once('C:\\Users\\USER\\D...')
+#6 {main}
+CRITICAL - 2020-11-02 20:22:36 --> Undefined variable: content
+#0 C:\Users\USER\Desktop\project\ci4_master\app\Controllers\Home.php(28): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\Users\\USER\\D...', 28, Array)
+#1 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(910): App\Controllers\Home->pdf()
+#2 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#3 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\Users\USER\Desktop\project\ci4_master\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 C:\Users\USER\Desktop\project\ci4_master\system\Commands\Server\rewrite.php(34): require_once('C:\\Users\\USER\\D...')
+#6 {main}
+CRITICAL - 2020-11-02 20:22:38 --> Undefined variable: content
+#0 C:\Users\USER\Desktop\project\ci4_master\app\Controllers\Home.php(28): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\Users\\USER\\D...', 28, Array)
+#1 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(910): App\Controllers\Home->pdf()
+#2 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#3 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\Users\USER\Desktop\project\ci4_master\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 C:\Users\USER\Desktop\project\ci4_master\system\Commands\Server\rewrite.php(34): require_once('C:\\Users\\USER\\D...')
+#6 {main}
+CRITICAL - 2020-11-02 20:22:39 --> Undefined variable: content
+#0 C:\Users\USER\Desktop\project\ci4_master\app\Controllers\Home.php(28): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\Users\\USER\\D...', 28, Array)
+#1 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(910): App\Controllers\Home->pdf()
+#2 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#3 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\Users\USER\Desktop\project\ci4_master\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 C:\Users\USER\Desktop\project\ci4_master\system\Commands\Server\rewrite.php(34): require_once('C:\\Users\\USER\\D...')
+#6 {main}
+CRITICAL - 2020-11-02 20:23:23 --> Use of undefined constant response - assumed 'response' (this will throw an Error in a future version of PHP)
+#0 C:\Users\USER\Desktop\project\ci4_master\app\Controllers\Home.php(32): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Use of undefine...', 'C:\\Users\\USER\\D...', 32, Array)
+#1 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(910): App\Controllers\Home->pdf()
+#2 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#3 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\Users\USER\Desktop\project\ci4_master\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 C:\Users\USER\Desktop\project\ci4_master\system\Commands\Server\rewrite.php(34): require_once('C:\\Users\\USER\\D...')
+#6 {main}
+CRITICAL - 2020-11-02 20:23:25 --> Use of undefined constant response - assumed 'response' (this will throw an Error in a future version of PHP)
+#0 C:\Users\USER\Desktop\project\ci4_master\app\Controllers\Home.php(32): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Use of undefine...', 'C:\\Users\\USER\\D...', 32, Array)
+#1 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(910): App\Controllers\Home->pdf()
+#2 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#3 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\Users\USER\Desktop\project\ci4_master\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 C:\Users\USER\Desktop\project\ci4_master\system\Commands\Server\rewrite.php(34): require_once('C:\\Users\\USER\\D...')
+#6 {main}
+CRITICAL - 2020-11-02 20:23:31 --> Use of undefined constant response - assumed 'response' (this will throw an Error in a future version of PHP)
+#0 C:\Users\USER\Desktop\project\ci4_master\app\Controllers\Home.php(28): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Use of undefine...', 'C:\\Users\\USER\\D...', 28, Array)
+#1 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(910): App\Controllers\Home->pdf()
+#2 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#3 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\Users\USER\Desktop\project\ci4_master\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 C:\Users\USER\Desktop\project\ci4_master\system\Commands\Server\rewrite.php(34): require_once('C:\\Users\\USER\\D...')
+#6 {main}
+CRITICAL - 2020-11-02 20:23:37 --> Use of undefined constant response - assumed 'response' (this will throw an Error in a future version of PHP)
+#0 C:\Users\USER\Desktop\project\ci4_master\app\Controllers\Home.php(28): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Use of undefine...', 'C:\\Users\\USER\\D...', 28, Array)
+#1 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(910): App\Controllers\Home->pdf()
+#2 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#3 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\Users\USER\Desktop\project\ci4_master\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 C:\Users\USER\Desktop\project\ci4_master\system\Commands\Server\rewrite.php(34): require_once('C:\\Users\\USER\\D...')
+#6 {main}
+CRITICAL - 2020-11-02 20:23:44 --> Undefined variable: name
+#0 C:\Users\USER\Desktop\project\ci4_master\app\Controllers\Home.php(30): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\Users\\USER\\D...', 30, Array)
+#1 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(910): App\Controllers\Home->pdf()
+#2 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#3 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\Users\USER\Desktop\project\ci4_master\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 C:\Users\USER\Desktop\project\ci4_master\system\Commands\Server\rewrite.php(34): require_once('C:\\Users\\USER\\D...')
+#6 {main}
+CRITICAL - 2020-11-02 20:24:00 --> Undefined variable: name
+#0 C:\Users\USER\Desktop\project\ci4_master\app\Controllers\Home.php(29): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\Users\\USER\\D...', 29, Array)
+#1 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(910): App\Controllers\Home->pdf()
+#2 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#3 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\Users\USER\Desktop\project\ci4_master\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#5 C:\Users\USER\Desktop\project\ci4_master\system\Commands\Server\rewrite.php(34): require_once('C:\\Users\\USER\\D...')
+#6 {main}
+CRITICAL - 2020-11-02 20:34:07 --> Maximum execution time of 60 seconds exceeded
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2020-11-02 20:35:08 --> Maximum execution time of 60 seconds exceeded
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2020-11-02 20:36:08 --> Maximum execution time of 60 seconds exceeded
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2020-11-02 20:37:08 --> Maximum execution time of 60 seconds exceeded
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2020-11-02 20:38:16 --> Maximum execution time of 60 seconds exceeded
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2020-11-02 20:39:17 --> Maximum execution time of 60 seconds exceeded
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2020-11-02 20:40:17 --> Maximum execution time of 60 seconds exceeded
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2020-11-02 20:41:58 --> Maximum execution time of 60 seconds exceeded
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2020-11-02 20:43:51 --> Maximum execution time of 60 seconds exceeded
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2020-11-02 20:57:35 --> Maximum execution time of 60 seconds exceeded
+#0 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+#1 {main}
+CRITICAL - 2020-11-02 21:24:05 --> Undefined variable: datas
+#0 C:\Users\USER\Desktop\project\ci4_master\app\Views\pdf\ppdb.php(23): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'C:\\Users\\USER\\D...', 23, Array)
+#1 C:\Users\USER\Desktop\project\ci4_master\system\View\View.php(236): include('C:\\Users\\USER\\D...')
+#2 C:\Users\USER\Desktop\project\ci4_master\system\Common.php(1071): CodeIgniter\View\View->render('pdf/ppdb', Array, true)
+#3 C:\Users\USER\Desktop\project\ci4_master\app\Controllers\Home.php(31): view('pdf/ppdb', Array)
+#4 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(910): App\Controllers\Home->pdf()
+#5 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(398): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#6 C:\Users\USER\Desktop\project\ci4_master\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\Users\USER\Desktop\project\ci4_master\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#8 C:\Users\USER\Desktop\project\ci4_master\system\Commands\Server\rewrite.php(34): require_once('C:\\Users\\USER\\D...')
+#9 {main}
