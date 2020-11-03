@@ -12,14 +12,17 @@ class Form extends Model
     {
         echo '
             <form class="form-horizontal" action="' . $action . '" method="post" enctype="multipart/form-data">
+            <div class="row">
         ';
     }
 
-    public static function submit($action = "Submit")
+    public static function submit($action = "Submit", $class = "btn btn-primary ml-3")
     {
         echo '
-            <button type="submit" class="btn btn-primary">' . $action . '</button>
-        ';
+        <div class="col-sm-12">
+            <button type="submit" class="'.$class.'">' . $action . '</button>
+        </div>
+            ';
     }
 
     public static function getfile_db($data, $path, $name, $id, $table, $datapath = "")
@@ -73,7 +76,10 @@ class Form extends Model
 
     public static function end()
     {
-        echo '</form>';
+        echo '
+        </div>
+        </form>
+        ';
     }
 
     public static function summernote()
@@ -124,9 +130,12 @@ class Form extends Model
     }
 
 
-    public static function input($data = [])
+    public static function input($data = [], $class = "col-sm-12")
     {
-        $html = '<div class="form-group mb-3">';
+        $html = '';
+        $html .= '
+        <div class="'.$class.'">
+        <div class="form-group mb-3">';
         if (isset($data["show-image"])) {
             if ($data["show-image"] === true) {
                 $html .= '	<div  style="text-align: center;">';
@@ -139,7 +148,7 @@ class Form extends Model
             }
         }
         if (self::cekdata($data, 'type') != "hidden") {
-            $html .= '	<label for="' . self::cekdata($data, 'fc') . '" class="control-label col-lg-2">' . self::cekdata($data, 'title') . '</label>';
+            $html .= '	<label for="' . self::cekdata($data, 'fc') . '" class="control-label col-lg-12">' . self::cekdata($data, 'title') . '</label>';
         }
         $html .= '<div class="col-lg-12">';
         $html .= '	<input ';
@@ -215,11 +224,8 @@ class Form extends Model
             }
         }
 
-
-
-
-
         $html .= '>';
+        $html .= '</div>';
         $html .= '</div>';
         if (isset($data["show-image"])) {
             if ($data["show-image"] === true) {
@@ -285,9 +291,11 @@ class Form extends Model
 
 
 
-    public static function textarea($data)
+    public static function textarea($data, $class="col-sm-12")
     {
-        $html = '<div class="form-group">';
+        $html = '
+        <div class="'.$class.'">
+        <div class="form-group">';
         if (isset($data["show-image"])) {
             if ($data["show-image"] === true) {
                 $html .= '	<div  style="text-align: center;">';
@@ -344,9 +352,11 @@ class Form extends Model
         echo $html;
     }
 
-    public static function editor($data)
+    public static function editor($data, $class="col-sm-12")
     {
-        $html = '<div class="form-group row" style="padding: 0 10px;">';
+        $html = '
+        <div class="'.$class.'"> 
+        <div class="form-group row" style="padding: 0 10px;">';
         if (isset($data["show-image"])) {
             if ($data["show-image"] === true) {
                 $html .= '	<div  style="text-align: center;">';
@@ -400,6 +410,7 @@ class Form extends Model
         $html .= '$("#' . self::cekdata($data, 'fc') . '").summernote()';
         $html .= '</script>';
         $html .= '</div>';
+        $html .= '</div>';
 
         echo $html;
     }
@@ -417,7 +428,7 @@ class Form extends Model
     }
 
 
-    public static function select_db($data = "")
+    public static function select_db($data = "", $class = "col-sm-12")
     {
         $db = \Config\Database::connect();
 
@@ -457,13 +468,15 @@ class Form extends Model
         }
 
         $html = "
-        <div class='form-group'>
-            <label for='" . $data['fc'] . "' class='control-label col-lg-2'>" . $data['title'] . "</label>
-            <div class='col-lg-10'>
-            <select id='" . $data['fc'] . "' name='data[" . $data['fc'] . "]' class='form-control'>
-                $createOption
-            </select>
-            </div>
+        <div class='$class'>
+            <div class='form-group'>
+                <label for='" . $data['fc'] . "' class='control-label col-lg-12'>" . $data['title'] . "</label>
+                <div class='col-lg-12'>
+                <select id='" . $data['fc'] . "' name='data[" . $data['fc'] . "]' class='form-control'>
+                    $createOption
+                </select>
+                </div>
+            </div> 
         </div> 
         ";
         echo $html;

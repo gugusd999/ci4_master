@@ -1,0 +1,108 @@
+/* // Extra small devices (portrait phones, less than 576px)
+// No media query for `xs` since this is the default in Bootstrap */
+
+/* // Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+}
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+}
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+}
+
+/* // Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+}
+
+#logosekolah {
+  height: 100px;
+  width: 100px;
+}
+#navbar_top {
+  background-color: #00b6ed;
+}
+.navbar-nav a {
+  background-color: #00b6ed;
+  color: white;
+}
+.navbar-nav .nav-link {
+  background-color: #00b6ed;
+  color: white;
+}
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 10rem;
+  padding: 0.5rem 0;
+  margin: 0.125rem 0 0;
+  font-size: 1rem;
+  color: #212529;
+  text-align: left;
+  list-style: none;
+  background-color: #00b6ed;
+  background-clip: none;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.25rem;
+}
+
+.btn-group-vertical button {
+  background-color: #00b6ed;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.25rem;
+  text-align: left;
+  color: white;
+}
+
+.card .card-body .card-title {
+  text-align: center;
+}
+
+.card .card-img-top {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.img-fluid {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card-img-top {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.d-block.w-100 {
+  height: 580px;
+  width: 100%;
+}
+.card-img-top {
+  height: 300px;
+  width: 300px;
+}
+#imgfoto {
+  height: 200px;
+  width: 200px;
+}
+
+.table-striped thead {
+  background-color: #00b6ed;
+  color: white;
+}
+.footer {
+  background-color: #00b6ed;
+  color: white;
+}
+
+.footer a {
+  color: white;
+}

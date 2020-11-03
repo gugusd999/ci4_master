@@ -902,7 +902,6 @@
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						<i class="icon-make-group position-left"></i> Page kits <span class="caret"></span>
 					</a>
-
 					<ul class="dropdown-menu width-250">
 						<li class="dropdown-header">Apps</li>
 						<li class="dropdown-submenu">
@@ -1052,7 +1051,6 @@
 						<span class="label label-inline position-right bg-success-400">1.2.1</span>
 					</a>
 				</li>
-
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						<i class="icon-cog3"></i>
