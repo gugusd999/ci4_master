@@ -11,7 +11,9 @@
         "ext-json": "*",
         "kint-php/kint": "^3.3",
         "psr/log": "^1.1",
-        "laminas/laminas-escaper": "^2.6"
+        "laminas/laminas-escaper": "^2.6",
+        "ramsey/uuid": "^4.1.1",
+        "mpdf/mpdf": "^8.0.7"
     },
     "require-dev": {
         "codeigniter4/codeigniter4-standard": "^1.0",

@@ -309,7 +309,7 @@ function crdb()
         array(
             "table" => "ppdb",
             "data" => array(
-                "id" => ai(11),
+                "id" => char(),
                 "nama_lengkap" => char(),
                 "jenis_kelamin" => int(),
                 "nisn" => char(),
@@ -361,7 +361,20 @@ function crdb()
                 "jumlah_saudara" => int(3),
                 "created_at" => timestamp(),
             )
+        ),
+        array(
+            "table" => "sub_ppdb",
+            "data" => array(
+                "id" => ai(11),
+                "ppdb_id" => char(),
+                "jenis_prestasi" => char(),
+                "tingkat" => char(255),
+                "tahun" => char(255),
+                "penyelenggaraan" => char(),
+            )
         )
     );
+
     return $arr;
+
 }

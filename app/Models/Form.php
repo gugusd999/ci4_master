@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use CodeIgniter\Model;
+use Ramsey\Uuid\Uuid;
 
 class Form extends Model
 {
@@ -427,6 +428,115 @@ class Form extends Model
         }
     }
 
+
+    public static function simpan($table = "", $row = [], $prov = "id", $autoid = true)
+    {
+        $uuid1 = Uuid::uuid1();
+        $mykeys = $uuid1->toString();
+        $gp = [];
+        if ($autoid === true) {
+            $gp[$prov] = $mykeys;
+        }
+
+        foreach(array_keys($row) as $zzz => $zzzz){
+            $gp[$zzzz] = $row[$zzzz];
+        }
+
+
+        $keys = array_keys($gp);
+        $mk = '';
+        foreach($keys as $mm => $yy){
+                if ($mm == 0) {
+                    $mk .= $yy;
+                }else{
+                    $mk .= ','.$yy;
+                }
+        }
+        $mkv = '';
+        // dd($gp);
+        foreach($keys as $mmms => $myz){
+            if($mmms == 0){
+                $mkv .= '"'.$gp[$myz].'"';
+            }else{
+                $mkv .= ',"'.$gp[$myz].'"';
+            }
+        }
+        $db = \Config\Database::connect();
+        $getData = $db->query("Insert into $table ($mk)
+        Values ($mkv)");
+        return $mykeys;
+    }
+
+
+    public static function break($data = [], $name = "")
+    {
+        $data = $data;
+        $json = $data[$name];
+        unset($data[$name]);
+        return [
+            "data" => $data,
+            "point" => $json
+        ];
+    }
+    
+    public static function compare($compa = [], $data = "")
+    {
+        $fulld = [];        
+        foreach($data as $data){
+            $bbb = $compa;
+            $myk = array_keys($data);
+            foreach($myk as $cc){
+                $bbb[$cc] = $data[$cc];
+            }
+
+            $fulld[] = $bbb;
+        }
+        return $fulld;
+    }
+
+    public static function multisave($table, $data = [], $key = "id"){
+        foreach ($data as $key => $value) {
+            self::simpan($table, $value, $key, false);
+        }
+    }
+
+    public static function inputgroup($data)
+    {
+
+        // array format
+        $title = "";
+        if(isset($data['title'])){
+            foreach ($data['title'] as $key => $value) {
+                $title .= "<td>$value</td>";
+            }
+        }
+
+        // array format
+        $myd = "";
+        if(isset($data['data']) && isset($data['total'])){
+            for ($i=0; $i < $data['total']; $i++) { 
+                $myd .= "<tr>";
+                foreach ($data['data'] as $key => $value) {
+                    $myd .= "<td><input class='form-control' name='data[".$data['fc']."][$i][$value]' type='text'></td>";
+                }
+                $myd .= "</tr>";
+            }
+        }
+        echo '
+        <div class="col-sm-12">
+            <div class="form-group">
+                <label for="">'.$data['header'].'</label>
+                <table class="table">
+                    <tr>
+                        '.$title.'
+                    </tr>
+                    '.$myd.'
+                </table>
+            </div>
+        </div>
+        
+        ';
+    }
 
     public static function select_db($data = "", $class = "col-sm-12")
     {

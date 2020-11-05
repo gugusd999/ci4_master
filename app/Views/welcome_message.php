@@ -3,6 +3,25 @@
 
 
 <div class="container mt-5 mb-5">
+
+	<?php if($download != null) : ?>
+		<div class="card bg-success text-white mb-5">
+			<div class="card-header">
+				<h3>
+					Pendaftaran Berhasil
+				</h3>
+			</div>
+			<div class="card-body">
+				<p>silahkan klik download dibawah ini untuk mendapatkan form pendaftaran</p>
+				<a href="<?= site_url('home/pdf/'.$download) ?>" class="btn btn-light" href="">Download Form</a>
+			</div>
+		</div>
+	<?php endif; ?>
+	<?php 
+		$ss = session();
+		$ss->remove('download');
+	?>
+
 	<h1>
 		Penerimaan Peserta Didik Baru
 	</h1>
@@ -213,11 +232,17 @@
 			"placeholder" => "inputkan Asal Sekolah SD",
 		]);
 	
-		$form::input([
+		$form::select_db([
 			"title" => "Apakah Sebagai Penerima KPS",
 			"type" => "text",
 			"fc" => "kps",
-			"data" => "id",
+			"db" => "status",
+			"data" => "status",
+			"key" => "id",
+			"condition" => [
+				"row" => "type_status",
+				"value" => '2'
+			],
 			"placeholder" => "Ya/ Tidak",
 		]);
 	
@@ -238,14 +263,6 @@
 		]);
 	
 		$form::input([
-			"title" => "tanggal lahir",
-			"type" => "text",
-			"fc" => "tanggal_lahir",
-			"data" => "id",
-			"placeholder" => "inputkan tanggal lahir",
-		]);
-	
-		$form::input([
 			"title" => "tempat lahir ayah",
 			"type" => "text",
 			"fc" => "tempat_lahir_ayah",
@@ -255,35 +272,41 @@
 	
 		$form::input([
 			"title" => "tanggal lahir ayah",
-			"type" => "text",
+			"type" => "date",
 			"fc" => "tanggal_lahir_ayah",
 			"data" => "id",
 			"placeholder" => "inputkan tanggal lahir ayah",
-		]);
+		], "col-sm-6");
 	
-		$form::input([
+		$form::select_db([
 			"title" => "pekerjaan ayah",
 			"type" => "text",
 			"fc" => "pekerjaan_ayah",
-			"data" => "id",
+			"db" => "m_pekerjaan",
+			"data" => "nama",
+			"id" => "id",
 			"placeholder" => "inputkan pekerjaan ayah",
-		]);
+		], "col-sm-6");
 	
-		$form::input([
+		$form::select_db([
 			"title" => "pendidikan ayah",
 			"type" => "text",
 			"fc" => "pendidikan_ayah",
-			"data" => "id",
+			"db" => "m_pendidikan",
+			"data" => "nama",
+			"id" => "id",
 			"placeholder" => "inputkan pendidikan ayah",
-		]);
+		], "col-sm-6");
 	
-		$form::input([
+		$form::select_db([
 			"title" => "penghasilan bulanan ayah",
 			"type" => "text",
 			"fc" => "penghasilan_bulanan_ayah",
-			"data" => "id",
+			"db" => "m_penghasilan",
+			"data" => "nama",
+			"id" => "id",
 			"placeholder" => "inputkan penghasilan bulanan ayah",
-		]);
+		], "col-sm-6");
 	
 		$form::input([
 			"title" => "nama ibu",
@@ -303,35 +326,41 @@
 	
 		$form::input([
 			"title" => "tanggal lahir ibu",
-			"type" => "text",
+			"type" => "date",
 			"fc" => "tanggal_lahir_ibu",
 			"data" => "id",
 			"placeholder" => "inputkan tanggal lahir ibu",
-		]);
+		], "col-sm-6");
 	
-		$form::input([
+		$form::select_db([
 			"title" => "pekerjaan ibu",
 			"type" => "text",
 			"fc" => "pekerjaan_ibu",
-			"data" => "id",
+			"db" => "m_pekerjaan",
+			"data" => "nama",
+			"id" => "id",
 			"placeholder" => "inputkan pekerjaan ibu",
-		]);
+		], "col-sm-6");
 	
-		$form::input([
+		$form::select_db([
 			"title" => "pendidikan ibu",
 			"type" => "text",
 			"fc" => "pendidikan_ibu",
-			"data" => "id",
+			"db" => "m_pendidikan",
+			"data" => "nama",
+			"id" => "id",
 			"placeholder" => "inputkan pendidikan ibu",
-		]);
+		], "col-sm-6");
 	
-		$form::input([
+		$form::select_db([
 			"title" => "penghasilan bulanan ibu",
 			"type" => "text",
 			"fc" => "penghasilan_bulanan_ibu",
-			"data" => "id",
+			"db" => "m_penghasilan",
+			"data" => "nama",
+			"id" => "id",
 			"placeholder" => "inputkan penghasilan bulanan ibu",
-		]);
+		], "col-sm-6");
 	
 		$form::input([
 			"title" => "nama wali",
@@ -351,35 +380,41 @@
 	
 		$form::input([
 			"title" => "tanggal lahir wali",
-			"type" => "text",
+			"type" => "date",
 			"fc" => "tanggal_lahir_wali",
 			"data" => "id",
 			"placeholder" => "inputkan tanggal lahir wali",
-		]);
+		], "col-sm-6");
 	
-		$form::input([
+		$form::select_db([
 			"title" => "pekerjaan wali",
 			"type" => "text",
 			"fc" => "pekerjaan_wali",
-			"data" => "id",
+			"db" => "m_pekerjaan",
+			"data" => "nama",
+			"id" => "id",
 			"placeholder" => "inputkan pekerjaan wali",
-		]);
+		], "col-sm-6");
 	
-		$form::input([
+		$form::select_db([
 			"title" => "pendidikan wali",
 			"type" => "text",
 			"fc" => "pendidikan_wali",
-			"data" => "id",
+			"db" => "m_pendidikan",
+			"data" => "nama",
+			"id" => "id",
 			"placeholder" => "inputkan pendidikan wali",
-		]);
+		], "col-sm-6");
 	
-		$form::input([
+		$form::select_db([
 			"title" => "penghasilan bulanan wali",
 			"type" => "text",
 			"fc" => "penghasilan_bulanan_wali",
-			"data" => "id",
+			"db" => "m_penghasilan",
+			"data" => "nama",
+			"id" => "id",
 			"placeholder" => "inputkan penghasilan bulanan wali",
-		]);
+		], "col-sm-6");
 	
 		$form::input([
 			"title" => "tinggi badan",
@@ -387,7 +422,7 @@
 			"fc" => "tinggi_badan",
 			"data" => "id",
 			"placeholder" => "inputkan tinggi badan",
-		]);
+		], "col-sm-4");
 	
 		$form::input([
 			"title" => "berat badan",
@@ -395,7 +430,7 @@
 			"fc" => "berat_badan",
 			"data" => "id",
 			"placeholder" => "inputkan berat badan",
-		]);
+		], "col-sm-4");
 	
 		$form::input([
 			"title" => "jarak rumah ke sekolah",
@@ -403,7 +438,7 @@
 			"fc" => "jarak_rumah_ke_sekolah",
 			"data" => "id",
 			"placeholder" => "inputkan jarak rumah ke sekolah",
-		]);
+		], "col-sm-4");
 	
 		$form::input([
 			"title" => "waktu tempuh ke sekolah",
@@ -411,7 +446,7 @@
 			"fc" => "waktu_tempuh_ke_sekolah",
 			"data" => "id",
 			"placeholder" => "inputkan waktu tempuh ke sekolah",
-		]);
+		], "col-sm-6");
 	
 		$form::input([
 			"title" => "jumlah saudara",
@@ -419,13 +454,19 @@
 			"fc" => "jumlah_saudara",
 			"data" => "id",
 			"placeholder" => "inputkan jumlah saudara",
+		], "col-sm-6");
+
+		$form::inputgroup([
+			"header" => "Prestasi",
+			"fc" => "prestasi",
+			"title" => ["Jenis Prestasi", "Tingkat", "Tahun", "Penyelenggaraan"],
+			"data" => ["jenis_prestasi", "tingkat", "tahun", "penyelenggaraan"],
+			"total" => 3
 		]);
 				
 		$form->submit("Simpan");
 		$form::end();
 	?>
-
-
 
 </div>
 

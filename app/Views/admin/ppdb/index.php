@@ -100,6 +100,15 @@
                                 ]);
                             
                                 $form::input([
+                                    "title" => "tanggal lahir",
+                                    "type" => "text",
+                                    "fc" => "tanggal_lahir",
+                                    "data" => "id",
+                                    "placeholder" => "inputkan tanggal lahir",
+                                    "value" => $edit->tanggal_lahir,
+                                ]);
+                            
+                                $form::input([
                                     "title" => "agama",
                                     "type" => "text",
                                     "fc" => "agama",
@@ -259,15 +268,6 @@
                                     "data" => "id",
                                     "placeholder" => "inputkan nama ayah",
                                     "value" => $edit->nama_ayah,
-                                ]);
-                            
-                                $form::input([
-                                    "title" => "tanggal lahir",
-                                    "type" => "text",
-                                    "fc" => "tanggal_lahir",
-                                    "data" => "id",
-                                    "placeholder" => "inputkan tanggal lahir",
-                                    "value" => $edit->tanggal_lahir,
                                 ]);
                             
                                 $form::input([
@@ -557,6 +557,14 @@
                                 ]);
                             
                                 $form::input([
+                                    "title" => "tanggal lahir",
+                                    "type" => "text",
+                                    "fc" => "tanggal_lahir",
+                                    "data" => "id",
+                                    "placeholder" => "inputkan tanggal lahir",
+                                ]);
+                            
+                                $form::input([
                                     "title" => "agama",
                                     "type" => "text",
                                     "fc" => "agama",
@@ -698,14 +706,6 @@
                                     "fc" => "nama_ayah",
                                     "data" => "id",
                                     "placeholder" => "inputkan nama ayah",
-                                ]);
-                            
-                                $form::input([
-                                    "title" => "tanggal lahir",
-                                    "type" => "text",
-                                    "fc" => "tanggal_lahir",
-                                    "data" => "id",
-                                    "placeholder" => "inputkan tanggal lahir",
                                 ]);
                             
                                 $form::input([
@@ -912,6 +912,7 @@
  <th>nun sd</th> 
  <th>nik</th> 
  <th>tempat lahir</th> 
+ <th>tanggal lahir</th> 
  <th>agama</th> 
  <th>berkebutuhan khusus</th> 
  <th>alamat</th> 
@@ -930,7 +931,6 @@
  <th>kps</th> 
  <th>nokps</th> 
  <th>nama ayah</th> 
- <th>tanggal lahir</th> 
  <th>tempat lahir ayah</th> 
  <th>tanggal lahir ayah</th> 
  <th>pekerjaan ayah</th> 

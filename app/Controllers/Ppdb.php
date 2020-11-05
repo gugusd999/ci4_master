@@ -44,6 +44,7 @@ class Ppdb extends BaseController
  OR nun_sd LIKE '%$pencarian%'  
  OR nik LIKE '%$pencarian%'  
  OR tempat_lahir LIKE '%$pencarian%'  
+ OR tanggal_lahir LIKE '%$pencarian%'  
  OR agama LIKE '%$pencarian%'  
  OR berkebutuhan_khusus LIKE '%$pencarian%'  
  OR alamat LIKE '%$pencarian%'  
@@ -62,7 +63,6 @@ class Ppdb extends BaseController
  OR kps LIKE '%$pencarian%'  
  OR nokps LIKE '%$pencarian%'  
  OR nama_ayah LIKE '%$pencarian%'  
- OR tanggal_lahir LIKE '%$pencarian%'  
  OR tempat_lahir_ayah LIKE '%$pencarian%'  
  OR tanggal_lahir_ayah LIKE '%$pencarian%'  
  OR pekerjaan_ayah LIKE '%$pencarian%'  
@@ -105,6 +105,7 @@ $child[] = $value->ns_skhun;
 $child[] = $value->nun_sd; 
 $child[] = $value->nik; 
 $child[] = $value->tempat_lahir; 
+$child[] = $value->tanggal_lahir; 
 $child[] = $value->agama; 
 $child[] = $value->berkebutuhan_khusus; 
 $child[] = $value->alamat; 
@@ -123,7 +124,6 @@ $child[] = $value->asal_sekolah_sd;
 $child[] = $value->kps; 
 $child[] = $value->nokps; 
 $child[] = $value->nama_ayah; 
-$child[] = $value->tanggal_lahir; 
 $child[] = $value->tempat_lahir_ayah; 
 $child[] = $value->tanggal_lahir_ayah; 
 $child[] = $value->pekerjaan_ayah; 
@@ -180,6 +180,24 @@ $child[] = $value->created_at;
         }
     }
 
+    public function save()
+    {
+        $data = $this->form()::break($_POST['data'], 'prestasi')['data'];
+        $point = $this->form()::break($_POST['data'], 'prestasi')['point'];
+        $simpan = $this->form()::simpan('ppdb' ,$data);
+        $compare = $this->form()::compare([
+            "ppdb_id" => $simpan
+        ], $point);
+        $this->form()::multisave("sub_ppdb", $compare);
+        $ss = session();
+        $ss->download = $simpan;
+        return redirect()->to('/');
+    }
+
+    public function sub($var)
+    {
+        echo "test";
+    }
 
     public function edit($edit = "")
     {
